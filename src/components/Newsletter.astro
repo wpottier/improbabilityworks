@@ -1,0 +1,73 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getDict, type Locale, SLUG_MAP } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = getDict(locale).newsletter;
+
+const privacyHref = getRelativeLocaleUrl(locale, SLUG_MAP.privacy[locale]);
+---
+<section id="dispatch" aria-labelledby="dispatch-title" class="relative py-28 md:py-36">
+  <div class="container-editorial">
+    <div class="grid grid-cols-12 gap-8 items-start">
+      <header class="col-span-12 lg:col-span-5">
+        <p class="eyebrow reveal">{d.eyebrow}</p>
+        <h2 id="dispatch-title" class="font-display text-4xl md:text-5xl leading-[1.05] text-parchment mt-6 text-balance reveal" style="--reveal-delay: 80ms;">
+          {d.title}
+        </h2>
+        <p class="mt-6 text-silver-cool/75 max-w-md reveal" style="--reveal-delay: 160ms;">
+          {d.body}
+        </p>
+      </header>
+
+      <div class="col-span-12 lg:col-span-7 reveal" style="--reveal-delay: 240ms;">
+        {/*
+          TODO: wire this form to Buttondown / Resend / ConvertKit.
+          - Option A: point `action` to the provider's public POST endpoint.
+          - Option B: create a server route (Astro adapter) that calls the provider
+            with NEWSLETTER_PROVIDER_API_KEY from .env.
+          Current state: action="#" prevents submission and preserves the UI.
+        */}
+        <form action="#" method="post" class="space-y-5" novalidate aria-describedby="dispatch-consent">
+          <div>
+            <label for="dispatch-email" class="sr-only">{d.emailLabel}</label>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <input
+                id="dispatch-email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+                placeholder={d.emailPlaceholder}
+                class="flex-1 bg-ink-night border border-white/10 focus:border-gold-warm/70 rounded-sm px-4 py-3 font-sans text-parchment placeholder:text-silver-cool/40 transition"
+              />
+              <button type="submit" class="btn btn-primary justify-center">
+                <span>{d.submit}</span>
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input
+              id="dispatch-consent-checkbox"
+              type="checkbox"
+              name="consent"
+              required
+              aria-required="true"
+              class="mt-1 w-4 h-4 accent-gold-bright border-white/20 rounded-sm"
+            />
+            <label for="dispatch-consent-checkbox" id="dispatch-consent" class="text-xs text-silver-cool/70 leading-relaxed">
+              <span class="text-gold-warm">*</span> {d.consent}
+              {' · '}
+              <a href={privacyHref} class="underline underline-offset-2 hover:text-parchment">{d.privacyLink}</a>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

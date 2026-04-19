@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { DEFAULT_LOCALE, type Locale, htmlLang, hreflangAlternates } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  /** Canonical slug key (matches SLUG_MAP). Used for hreflang + language switching. */
+  slug?: string;
+  title: string;
+  description: string;
+  /** Open Graph image path (relative to site root). */
+  ogImage?: string;
+  /** Optional JSON-LD blob (object or array of objects). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** If true, apply the cosmic studio background. Defaults to true. */
+  cosmic?: boolean;
+}
+
+const {
+  locale,
+  slug = 'home',
+  title,
+  description,
+  ogImage,
+  jsonLd,
+  cosmic = true,
+} = Astro.props;
+
+const siteOrigin = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonical = siteOrigin + Astro.url.pathname;
+const alternates = hreflangAlternates(slug, siteOrigin);
+const resolvedOg = ogImage ?? `/og/og-${locale}.svg`;
+const ogUrl = siteOrigin + resolvedOg;
+---
+<!doctype html>
+<html lang={htmlLang(locale)}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#050814" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Improbability Works" />
+    <meta property="og:locale" content={htmlLang(locale).replace('-', '_')} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+  </head>
+  <body class={cosmic ? 'bg-hero min-h-screen' : 'min-h-screen'}>
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-gold-bright focus:text-ink-deep focus:rounded-sm">
+      {locale === 'fr' ? 'Aller au contenu' : 'Skip to content'}
+    </a>
+
+    <Nav locale={locale} slug={slug} />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer locale={locale} slug={slug} />
+
+    <script>
+      // Lightweight reveal-on-scroll: toggles .is-visible on elements with .reveal.
+      // No dependencies, respects prefers-reduced-motion by immediately revealing.
+      const els = document.querySelectorAll<HTMLElement>('.reveal');
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced || !('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.08 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>
+
+<style>
+  /* Studio cosmic page background — subtle vertical fade + star dust behind everything */
+  body.bg-hero {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(107, 63, 212, 0.12) 0%, transparent 60%),
+      linear-gradient(180deg, #050814 0%, #070B1C 35%, #0B0E26 100%);
+    background-attachment: fixed;
+  }
+</style>

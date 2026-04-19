@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 260" width="260" height="260" role="img" aria-label="Founder avatar — stylized portal">
+  <defs>
+    <radialGradient id="av-core" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#8FD0FF" stop-opacity="0.85"/>
+      <stop offset="45%" stop-color="#6B3FD4" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="av-frame" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5D98E"/>
+      <stop offset="100%" stop-color="#D4AF6A"/>
+    </linearGradient>
+  </defs>
+  <rect width="260" height="260" fill="#0B0E26"/>
+  <!-- Outer hex frame -->
+  <path d="M 130 18 L 222 66 V 194 L 130 242 L 38 194 V 66 Z" fill="none" stroke="url(#av-frame)" stroke-width="1.6"/>
+  <path d="M 130 30 L 212 72 V 188 L 130 230 L 48 188 V 72 Z" fill="none" stroke="#D4AF6A" stroke-opacity="0.3" stroke-width="0.8"/>
+  <!-- Portal core -->
+  <circle cx="130" cy="130" r="72" fill="url(#av-core)"/>
+  <!-- Spiral -->
+  <path d="M 130 82 C 160 96 164 146 134 160 C 112 170 108 140 124 130 C 136 124 144 136 138 144" fill="none" stroke="#F5D98E" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Particles -->
+  <g fill="#F5D98E">
+    <circle cx="80" cy="70" r="1.8"/>
+    <circle cx="190" cy="70" r="1.4"/>
+    <circle cx="68" cy="180" r="1.6"/>
+    <circle cx="200" cy="190" r="1.6"/>
+    <circle cx="130" cy="52" r="1.2"/>
+    <circle cx="130" cy="210" r="1.2"/>
+  </g>
+</svg>

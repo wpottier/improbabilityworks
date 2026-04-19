@@ -1,0 +1,161 @@
+{
+  "site": {
+    "studioName": "Improbability Works",
+    "studioTagline": "Des mondes qui ne tiennent debout que parce qu\u2019ils ne le devraient pas.",
+    "gameName": "Velvet Door",
+    "gameTagline": "Chicago, 1929. La nuit vous appartient \u2014 \u00e0 vous de l\u2019organiser."
+  },
+  "nav": {
+    "studio": "Studio",
+    "manifesto": "Manifeste",
+    "game": "Velvet Door",
+    "roadmap": "Feuille de route",
+    "team": "\u00c9quipe",
+    "newsletter": "La d\u00e9p\u00eache",
+    "skipToContent": "Aller au contenu",
+    "ariaLabel": "Navigation principale",
+    "languageLabel": "Langue"
+  },
+  "hero": {
+    "eyebrow": "Studio de jeu ind\u00e9pendant",
+    "title": "Improbability Works",
+    "tagline": "Des mondes qui ne tiennent debout que parce qu\u2019ils ne le devraient pas.",
+    "body": "Studio ind\u00e9pendant qui con\u00e7oit des exp\u00e9riences coop\u00e9ratives o\u00f9 l\u2019\u00e9l\u00e9gance, le chaos et l\u2019organisation humaine se t\u00e9lescopent.",
+    "ctaPrimary": "D\u00e9couvrir Velvet Door",
+    "ctaSecondary": "Rejoindre le Discord",
+    "scrollCue": "D\u00e9filer"
+  },
+  "manifesto": {
+    "eyebrow": "Manifeste",
+    "title": "Cinq convictions. Sans ast\u00e9risque.",
+    "intro": "Ce que le studio croit vraiment. Pas un guide de style \u2014 une s\u00e9rie de refus.",
+    "pillars": [
+      {
+        "number": "01",
+        "title": "L\u2019ind\u00e9pendance, pas l\u2019isolement",
+        "body": "\u00catre ind\u00e9pendant, c\u2019est r\u00e9pondre \u00e0 l\u2019\u0153uvre, pas \u00e0 un objectif trimestriel. La pression des \u00e9diteurs traditionnels \u2014 jalons impos\u00e9s, calendriers forc\u00e9s, mandats de genre \u2014 est un non. Collaborer avec des \u00e9diteurs qui respectent le projet et prot\u00e8gent sa vision, c\u2019est autre chose. L\u2019ind\u00e9pendance, c\u2019est garder le fil, pas refuser toute main tendue."
+      },
+      {
+        "number": "02",
+        "title": "Les syst\u00e8mes plut\u00f4t que les scripts",
+        "body": "On construit des jeux comme on plante un jardin, pas comme on \u00e9crit une pi\u00e8ce. Les moments int\u00e9ressants \u00e9mergent de syst\u00e8mes en collision. Les scripts ferment des possibilit\u00e9s. Les syst\u00e8mes les multiplient."
+      },
+      {
+        "number": "03",
+        "title": "Meilleurs \u00e0 plusieurs",
+        "body": "Les choses les plus int\u00e9ressantes arrivent quand des humains doivent se coordonner, n\u00e9gocier et improviser ensemble sous pression. Pas un dogme sur la forme \u2014 coop\u00e9ratif, comp\u00e9titif, asym\u00e9trique \u2014 le jeu d\u00e9cide. Mais le territoire qui vaut d\u2019\u00eatre explor\u00e9 est presque toujours celui de l\u2019organisation humaine \u00e0 son point de rupture."
+      },
+      {
+        "number": "04",
+        "title": "La d\u00e9couverte naturelle",
+        "body": "Un syst\u00e8me bien construit s\u2019apprend par ce qu\u2019il est. La cons\u00e9quence d\u00e9coule de l\u2019action. L\u2019interface refl\u00e8te la r\u00e9alit\u00e9. On apprend au rythme qu\u2019on choisit \u2014 il n\u2019y a pas une seule bonne fa\u00e7on de traverser un jeu qui vous fait confiance. Les tutoriels ne sont pas le probl\u00e8me. La condescendance l\u2019est."
+      },
+      {
+        "number": "05",
+        "title": "L\u2019exp\u00e9rience est la finalit\u00e9",
+        "body": "Pas des exercices de genre. Chaque jeu doit offrir ce que seul un jeu peut donner : du fun qu\u2019on ne comprend qu\u2019apr\u00e8s l\u2019avoir v\u00e9cu, une histoire qui appartient \u00e0 ceux qui ont jou\u00e9, un moment qu\u2019on garde. Les m\u00e9caniques sont le vocabulaire, pas la finalit\u00e9. Une m\u00e9canique qu\u2019on ne ressent pas n\u2019a rien \u00e0 faire l\u00e0."
+      }
+    ]
+  },
+  "roadmap": {
+    "eyebrow": "Feuille de route",
+    "title": "Construit \u00e0 ciel ouvert, au rythme qu\u2019il faut.",
+    "intro": "Pas de dates qu\u2019on ne tiendrait pas. Suivez le d\u00e9veloppement semaine apr\u00e8s semaine sur Discord.",
+    "stages": [
+      {
+        "label": "Maintenant",
+        "title": "Tranche verticale en d\u00e9veloppement",
+        "body": "Une nuit, un speakeasy, tous les syst\u00e8mes c\u0153ur branch\u00e9s bout-en-bout."
+      },
+      {
+        "label": "Ensuite",
+        "title": "Playtest ferm\u00e9 (Valve Playtest)",
+        "body": "Petit, sur invitation. Nous voulons des tables d\u2019ami\u00b7e\u00b7s, pas d\u2019inconnu\u00b7e\u00b7s."
+      },
+      {
+        "label": "Bient\u00f4t",
+        "title": "Acc\u00e8s anticip\u00e9 Steam",
+        "body": "Le jeu parle des histoires de votre table \u2014 il lui faut des tables."
+      },
+      {
+        "label": "Plus tard",
+        "title": "Sortie compl\u00e8te",
+        "body": "Quand les soir\u00e9es vaudront le coup sans qu\u2019on ait besoin d\u2019expliquer pourquoi."
+      }
+    ],
+    "ctaDiscord": "Suivre sur Discord"
+  },
+  "team": {
+    "eyebrow": "Studio",
+    "title": "Un studio d\u2019une seule personne, pour l\u2019instant.",
+    "intro": "Petit volontairement. Lent volontairement. Responsable volontairement.",
+    "member": {
+      "name": "Will",
+      "role": "Fondateur & d\u00e9veloppeur solo",
+      "bio": "D\u00e9veloppeur solo derri\u00e8re Velvet Door. Blueprint en premier, caf\u00e9 en continu, obsession pour les syst\u00e8mes qui racontent des histoires. Bas\u00e9 en France.",
+      "links": {
+        "bluesky": "Bluesky",
+        "mastodon": "Mastodon",
+        "github": "GitHub"
+      }
+    }
+  },
+  "newsletter": {
+    "eyebrow": "La d\u00e9p\u00eache",
+    "title": "Des nouvelles majeures, envoy\u00e9es quand \u00e7a compte.",
+    "body": "Peu d\u2019envois. Les \u00e9tapes importantes et les invitations aux playtests ferm\u00e9s. Jamais de spam.",
+    "emailLabel": "Adresse e-mail",
+    "emailPlaceholder": "vous@domaine.com",
+    "submit": "Recevoir la d\u00e9p\u00eache",
+    "consent": "J\u2019accepte de recevoir occasionnellement des e-mails d\u2019Improbability Works au sujet de Velvet Door et du studio. Je peux me d\u00e9sabonner \u00e0 tout moment.",
+    "consentRequired": "Requis",
+    "privacyLink": "Politique de confidentialit\u00e9"
+  },
+  "footer": {
+    "tagline": "Des mondes qui ne tiennent debout que parce qu\u2019ils ne le devraient pas.",
+    "colStudio": "Studio",
+    "colGame": "Jeu",
+    "colLegal": "Mentions",
+    "colSocial": "Ailleurs",
+    "links": {
+      "manifesto": "Manifeste",
+      "team": "\u00c9quipe",
+      "newsletter": "La d\u00e9p\u00eache",
+      "velvetDoor": "Velvet Door",
+      "wishlist": "Liste de souhaits Steam",
+      "pressKit": "Dossier de presse",
+      "discord": "Discord",
+      "bluesky": "Bluesky",
+      "mastodon": "Mastodon",
+      "github": "GitHub",
+      "legalNotice": "Mentions l\u00e9gales",
+      "eula": "CLUF",
+      "privacy": "Politique de confidentialit\u00e9"
+    },
+    "madeIn": "Fait avec improbabilit\u00e9 en France.",
+    "copyright": "\u00a9 {year} Improbability Works. Tous droits r\u00e9serv\u00e9s."
+  },
+  "legal": {
+    "notice": {
+      "title": "Mentions l\u00e9gales",
+      "metaDescription": "Informations l\u00e9gales d\u2019Improbability Works et du site improbabilityworks.com."
+    },
+    "eula": {
+      "title": "CLUF",
+      "metaDescription": "Contrat de licence utilisateur final pour improbabilityworks.com."
+    },
+    "privacy": {
+      "title": "Politique de confidentialit\u00e9",
+      "metaDescription": "Comment Improbability Works traite les donn\u00e9es personnelles."
+    }
+  },
+  "meta": {
+    "homeTitle": "Improbability Works \u2014 Des jeux coop\u00e9ratifs qui se retiennent",
+    "homeDescription": "Studio ind\u00e9pendant qui con\u00e7oit des exp\u00e9riences coop\u00e9ratives o\u00f9 l\u2019\u00e9l\u00e9gance, le chaos et l\u2019organisation humaine se t\u00e9lescopent. Cr\u00e9ateurs de Velvet Door.",
+    "ogAlt": "Improbability Works \u2014 Des mondes qui ne tiennent debout que parce qu\u2019ils ne le devraient pas."
+  },
+  "a11y": {
+    "logoAlt": "Logo portail d\u2019Improbability Works",
+    "decorative": "D\u00e9coratif"
+  }
+}

@@ -1,0 +1,176 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props {
+  game: CollectionEntry<'games'>;
+}
+
+const { game } = Astro.props;
+const { Content } = await render(game);
+const d = game.data;
+---
+
+<!-- Visual transition to the speakeasy: cosmic fades out, velvet palette takes over -->
+<div class="relative h-28 md:h-36 bg-gradient-to-b from-ink-night via-[#180B0E] to-velvet-noir" aria-hidden="true">
+  <div class="absolute inset-x-0 bottom-0 h-16 bg-deco-stripe opacity-50"></div>
+</div>
+
+<section
+  id={d.gameId}
+  aria-labelledby={`${d.gameId}-title`}
+  class="relative bg-velvet-fade text-velvet-ivory grain-overlay grain-overlay--heavy"
+>
+  <!-- Deco top frieze -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-12" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" class="w-full h-full text-velvet-gold/50">
+      <path d="M0 24 H1440" stroke="currentColor" stroke-width="0.6" />
+      <path d="M0 30 H1440" stroke="currentColor" stroke-width="0.3" stroke-dasharray="2 6" />
+      {Array.from({ length: 18 }).map((_, i) => {
+        const x = 40 + i * 80;
+        return (
+          <g transform={`translate(${x},24)`}>
+            <path d="M-6 0 L0 -8 L6 0 L0 8 Z" fill="currentColor" fill-opacity="0.6" />
+          </g>
+        );
+      })}
+    </svg>
+  </div>
+
+  <div class="container-wide relative py-28 md:py-40">
+    <header class="max-w-3xl">
+      <p class="eyebrow-deco reveal">{d.eyebrow}</p>
+      <h2
+        id={`${d.gameId}-title`}
+        class="font-deco text-5xl md:text-7xl lg:text-8xl text-velvet-ivory mt-6 tracking-[0.06em] reveal"
+        style="--reveal-delay: 80ms;"
+      >
+        {d.title}
+      </h2>
+      <p class="mt-6 font-display italic text-xl md:text-2xl text-velvet-gold reveal" style="--reveal-delay: 160ms;">
+        {d.tagline}
+      </p>
+    </header>
+
+    <div class="mt-14 grid gap-10 md:grid-cols-[2fr_1fr] items-start">
+      <!-- Pitch prose (MDX body) + CTAs -->
+      <div class="reveal" style="--reveal-delay: 240ms;">
+        <p class="font-display text-2xl md:text-3xl text-velvet-ivory leading-snug max-w-xl text-balance">
+          {d.pitchLede}
+        </p>
+        <div class="mt-6 text-velvet-ivory/80 text-lg leading-relaxed max-w-xl text-pretty game-pitch-prose">
+          <Content />
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4">
+          {d.steamUrl && d.ui.ctaWishlist && (
+            <a
+              href={d.steamUrl}
+              rel="noopener"
+              target="_blank"
+              class="btn btn-velvet"
+            >
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a10 10 0 0 0-9.95 9.09l5.4 2.23a2.82 2.82 0 0 1 1.6-.49c.08 0 .16 0 .24.01l2.4-3.5v-.05a3.77 3.77 0 0 1 3.76-3.77 3.77 3.77 0 0 1 3.77 3.77 3.77 3.77 0 0 1-3.78 3.77h-.08l-3.44 2.46v.19a2.84 2.84 0 0 1-5.6.63L3.03 15a10 10 0 1 0 8.97-13Zm-4.98 15.08-1.24-.51a2.14 2.14 0 0 0 2.97 1.12 2.14 2.14 0 0 0 1.14-2.79l1.28.53a2.84 2.84 0 0 1-4.15 1.65ZM17.63 8.5a2.5 2.5 0 1 0-2.5 2.51 2.5 2.5 0 0 0 2.5-2.5Zm-4.4 0a1.89 1.89 0 0 1 3.78 0 1.89 1.89 0 0 1-3.78 0Z" />
+              </svg>
+              <span>{d.ui.ctaWishlist}</span>
+            </a>
+          )}
+          {d.ui.ctaEpic && (
+            <button type="button" class="btn btn-disabled" aria-disabled="true" disabled>
+              <span aria-hidden="true">▣</span>
+              <span>{d.ui.ctaEpic}</span>
+              {d.ui.ctaEpicSoon && (
+                <span class="ml-1 text-[10px] uppercase tracking-widest opacity-70">· {d.ui.ctaEpicSoon}</span>
+              )}
+            </button>
+          )}
+        </div>
+      </div>
+
+      <!-- Feature cards -->
+      <ul class="grid gap-4 reveal" style="--reveal-delay: 360ms;" role="list">
+        {d.features.map((f, i) => (
+          <li class="deco-frame">
+            <div class="flex items-baseline gap-3">
+              <span class="font-deco text-velvet-gold text-xs tracking-[0.3em]">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="font-display text-lg text-velvet-ivory leading-snug">{f.title}</h3>
+            </div>
+            <p class="mt-2 text-sm text-velvet-ivory/75 leading-relaxed">{f.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Gallery -->
+    {d.gallery.length > 0 && (
+      <div class="mt-24 reveal" style="--reveal-delay: 160ms;">
+        <div class="flex items-baseline justify-between mb-6">
+          <p class="eyebrow-deco">{d.ui.galleryHint}</p>
+          <span class="rule-velvet" aria-hidden="true"></span>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+          {d.gallery.map((src, n) => (
+            <figure class="relative aspect-[16/9] overflow-hidden border border-velvet-gold/20 bg-velvet-noir">
+              <img
+                src={src}
+                alt={`${d.title} — screenshot ${n + 1}`}
+                width="1920"
+                height="1080"
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Press kit -->
+    <div id="press-kit" class="mt-24 border-t border-velvet-gold/15 pt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
+      <div>
+        <p class="eyebrow-deco">{d.ui.pressKit}</p>
+        <p class="mt-2 text-velvet-ivory/75 max-w-md text-sm">{d.ui.pressKitNote}</p>
+      </div>
+      {/* TODO: replace # with final press-kit URL once ready. */}
+      <a
+        href={d.pressKitUrl ?? '#'}
+        class="btn btn-outline border-velvet-gold/40 text-velvet-ivory hover:text-velvet-ivory hover:border-velvet-gold"
+      >
+        <span>{d.ui.pressKit}</span>
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Deco bottom frieze -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-12" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" class="w-full h-full text-velvet-gold/50">
+      <path d="M0 24 H1440" stroke="currentColor" stroke-width="0.6" />
+      {Array.from({ length: 18 }).map((_, i) => {
+        const x = 40 + i * 80;
+        return (
+          <g transform={`translate(${x},24)`}>
+            <path d="M-6 0 L0 -8 L6 0 L0 8 Z" fill="currentColor" fill-opacity="0.6" />
+          </g>
+        );
+      })}
+    </svg>
+  </div>
+</section>
+
+<!-- Visual transition back to the cosmic palette -->
+<div class="relative h-24 md:h-32 bg-gradient-to-b from-velvet-noir via-[#110615] to-ink-night" aria-hidden="true"></div>
+
+<style is:global>
+  /* Pitch prose rendered from MDX body — inherits velvet palette */
+  .game-pitch-prose p { margin-top: 0.75rem; }
+  .game-pitch-prose p:first-child { margin-top: 0; }
+  .game-pitch-prose strong { color: var(--velvet-ivory); }
+  .game-pitch-prose em { color: var(--velvet-gold); font-style: italic; }
+  .game-pitch-prose a {
+    color: var(--velvet-gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

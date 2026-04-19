@@ -1,0 +1,12 @@
+# Canonical redirect: /en/* → /* (301 permanent)
+# EN is served at root (prefixDefaultLocale: false).
+# These rules ensure old /en/ links and any hardcoded /en/ URLs stay valid.
+#
+# Works on: Netlify, Cloudflare Pages
+# For Vercel: see vercel.json at project root.
+
+/en/legal/          /legal/          301!
+/en/eula/           /eula/           301!
+/en/privacy/        /privacy/        301!
+/en/                /                301!
+/en                 /                301!

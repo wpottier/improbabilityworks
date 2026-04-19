@@ -1,0 +1,35 @@
+---
+/**
+ * EN legal pages — canonical URLs at root: /legal/, /eula/, /privacy/.
+ * French equivalents at /fr/mentions-legales/ etc. via [lang]/[slug].astro.
+ *
+ * getStaticPaths filters the `legal` collection to EN entries only.
+ * Adding a new EN legal doc = add legal.en.mdx + entry in SLUG_MAP. No changes here.
+ */
+import { getCollection, render } from 'astro:content';
+import LegalLayout from '../layouts/LegalLayout.astro';
+import Section from '../components/mdx/Section.astro';
+import type { Locale } from '../i18n/utils';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('legal', ({ data }) => data.locale === 'en');
+  return entries.map((entry) => ({
+    params: { slug: entry.data.urlSlug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const locale = entry.data.locale as Locale;
+---
+
+<LegalLayout
+  locale={locale}
+  slug={entry.data.canonical}
+  title={entry.data.title}
+  description={entry.data.description}
+  lastUpdated={entry.data.lastUpdated}
+>
+  <Content components={{ Section }} />
+</LegalLayout>

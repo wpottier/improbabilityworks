@@ -1,0 +1,66 @@
+---
+import { getDict, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const d = getDict(locale).team;
+// TODO: replace {{ FOUNDER_HANDLE }} below when the final public handle is confirmed.
+---
+<section id="team" aria-labelledby="team-title" class="relative py-28 md:py-36">
+  <div class="container-editorial">
+    <header class="max-w-3xl">
+      <p class="eyebrow reveal">{d.eyebrow}</p>
+      <h2 id="team-title" class="font-display text-4xl md:text-6xl leading-[1.05] text-parchment mt-6 text-balance reveal" style="--reveal-delay: 80ms;">
+        {d.title}
+      </h2>
+      <p class="mt-6 text-silver-cool/75 max-w-xl reveal" style="--reveal-delay: 160ms;">{d.intro}</p>
+    </header>
+
+    <article class="mt-16 grid grid-cols-12 gap-8 items-start reveal">
+      <div class="col-span-12 md:col-span-4">
+        <figure class="relative aspect-square max-w-[260px]">
+          <!-- Stylized SVG portal avatar, served as a real file so <img> works naturally. -->
+          <img
+            src="/team/founder-avatar.svg"
+            alt={`${d.member.name} — ${d.member.role}`}
+            width="260"
+            height="260"
+            class="w-full h-auto"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+
+      <div class="col-span-12 md:col-span-8">
+        <p class="font-mono text-[11px] uppercase tracking-[0.28em] text-gold-warm">{d.member.role}</p>
+        <h3 class="font-display text-3xl md:text-4xl text-parchment mt-2">{d.member.name}</h3>
+        <p class="mt-5 max-w-xl text-silver-cool/80 text-lg leading-relaxed text-pretty">{d.member.bio}</p>
+
+        <ul class="mt-8 flex flex-wrap gap-3" role="list">
+          {/* TODO: replace # placeholders with real Bluesky / Mastodon / GitHub URLs. */}
+          <li>
+            <a href="#" rel="me noopener" target="_blank" class="btn btn-outline">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 3.5c2.4 0 5.5 3 5.5 6.5 0-3.5 3.1-6.5 5.5-6.5 1.7 0 3 1.3 3 3v8c0 4.1-5.9 6.5-8.5 6.5-2.6 0-8.5-2.4-8.5-6.5v-8c0-1.7 1.3-3 3-3Z"/></svg>
+              {d.member.links.bluesky}
+            </a>
+          </li>
+          <li>
+            <a href="#" rel="me noopener" target="_blank" class="btn btn-outline">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M21 8.6v6.3c0 3.5-2.3 4.5-4.5 4.8-3.7.4-5.8.3-8.5 0-2.2-.3-4.5-1.3-4.5-4.8V8.6c0-3.5 2.3-4.5 4.5-4.8 3.7-.4 5.8-.4 8.5 0 2.2.3 4.5 1.3 4.5 4.8ZM17.4 9.4c0-1.5-.4-2.7-1.2-3.5-.8-.8-1.9-1.2-3.1-1.2-1.5 0-2.6.6-3.3 1.7-.7-1.1-1.8-1.7-3.3-1.7-1.2 0-2.3.4-3.1 1.2-.8.8-1.2 2-1.2 3.5v4.3h2v-4.2c0-1.6.8-2.5 2.2-2.5 1.6 0 2.4.9 2.4 2.7v2.5h2v-2.5c0-1.8.8-2.7 2.4-2.7 1.4 0 2.2.9 2.2 2.5v4.2h2V9.4Z"/></svg>
+              {d.member.links.mastodon}
+            </a>
+          </li>
+          <li>
+            <a href="#" rel="me noopener" target="_blank" class="btn btn-outline">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.52 9.52 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.33 4.68-4.56 4.93.36.31.68.93.68 1.88v2.79c0 .26.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+              {d.member.links.github}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#050814"/>
+      <stop offset="60%" stop-color="#0B0E26"/>
+      <stop offset="100%" stop-color="#120B2A"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="75%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#8FD0FF" stop-opacity="0.4"/>
+      <stop offset="40%" stop-color="#6B3FD4" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#050814" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F1F4FA"/>
+      <stop offset="50%" stop-color="#C9CDD6"/>
+      <stop offset="100%" stop-color="#D4AF6A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#halo)"/>
+
+  <!-- Particles -->
+  <g fill="#F5D98E">
+    <circle cx="120" cy="80" r="2" opacity="0.9"/>
+    <circle cx="220" cy="200" r="1.5" opacity="0.6"/>
+    <circle cx="90" cy="420" r="2" opacity="0.75"/>
+    <circle cx="380" cy="120" r="1.2" opacity="0.5"/>
+    <circle cx="660" cy="80" r="1.8" opacity="0.8"/>
+    <circle cx="980" cy="520" r="2" opacity="0.6"/>
+    <circle cx="1100" cy="120" r="1.5" opacity="0.7"/>
+    <circle cx="1040" cy="240" r="2" opacity="0.85"/>
+    <circle cx="520" cy="520" r="1.4" opacity="0.6"/>
+    <circle cx="760" cy="480" r="1.6" opacity="0.7"/>
+  </g>
+
+  <!-- Portal ornament -->
+  <g transform="translate(880,315)" fill="none" stroke="#D4AF6A">
+    <circle r="150" stroke-opacity="0.25" stroke-width="1"/>
+    <circle r="110" stroke-opacity="0.4" stroke-width="1"/>
+    <circle r="70" stroke-opacity="0.6" stroke-width="1"/>
+    <circle r="30" fill="#F5D98E" fill-opacity="0.25" stroke="none"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="80" y="280" font-family="Fraunces, Georgia, serif" font-weight="400" font-size="130" letter-spacing="-3" fill="url(#title)">Improbability</text>
+
+  <!-- Deco rule + tagline -->
+  <line x1="80" y1="325" x2="140" y2="325" stroke="#D4AF6A" stroke-width="1.2"/>
+  <text x="155" y="334" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="32" fill="#F2E8D0">Worlds that only work because they shouldn’t.</text>
+
+  <!-- Studio mark -->
+  <text x="80" y="405" font-family="Cinzel, Georgia, serif" font-size="18" letter-spacing="6" fill="#D4AF6A">INDEPENDENT GAME STUDIO · MAKERS OF VELVET DOOR</text>
+
+  <!-- Bottom rule + URL -->
+  <line x1="80" y1="560" x2="1120" y2="560" stroke="#D4AF6A" stroke-opacity="0.3" stroke-width="0.8"/>
+  <text x="80" y="595" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="2" fill="#C9CDD6">improbabilityworks.com</text>
+  <text x="1120" y="595" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="2" fill="#C9CDD6">— EN</text>
+</svg>

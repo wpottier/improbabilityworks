@@ -1,0 +1,75 @@
+---
+/**
+ * Non-default locale home pages.
+ * With prefixDefaultLocale: false, EN home lives at src/pages/index.astro (canonical /).
+ * This file handles every other locale — currently only FR at /fr/.
+ *
+ * To add a new language: add its code to the LOCALES array in i18n/utils.ts,
+ * create the translation JSON and the game MDX files for that locale.
+ * No changes needed here.
+ */
+import { getCollection } from 'astro:content';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Manifesto from '../../components/Manifesto.astro';
+import GameSection from '../../components/GameSection.astro';
+import Roadmap from '../../components/Roadmap.astro';
+import Team from '../../components/Team.astro';
+import Newsletter from '../../components/Newsletter.astro';
+import { LOCALES, DEFAULT_LOCALE, t, type Locale } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  // Exclude the default locale — it is served at root by src/pages/index.astro.
+  return LOCALES
+    .filter((lang) => lang !== DEFAULT_LOCALE)
+    .map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+
+const title = t('meta.homeTitle', locale);
+const description = t('meta.homeDescription', locale);
+
+// Load all games for this locale, sorted by display order.
+const games = (await getCollection('games', ({ data }) => data.locale === locale))
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Build JSON-LD: Organisation + one VideoGame entry per game in the collection.
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Improbability Works',
+    url: 'https://improbabilityworks.com' + getRelativeLocaleUrl(locale, ''),
+    logo: 'https://improbabilityworks.com/improbabilityworks_logo.png',
+    description: t('meta.homeDescription', locale),
+    foundingLocation: { '@type': 'Place', name: 'France' },
+    sameAs: [] as string[],
+  },
+  ...games.map((g) => ({
+    '@context': 'https://schema.org',
+    '@type': 'VideoGame',
+    name: g.data.title,
+    description: g.data.pitchLede,
+    gamePlatform: g.data.platforms,
+    genre: g.data.genre,
+    ...(g.data.minPlayers !== undefined && g.data.maxPlayers !== undefined
+      ? { numberOfPlayers: { '@type': 'QuantitativeValue', minValue: g.data.minPlayers, maxValue: g.data.maxPlayers } }
+      : {}),
+    publisher: { '@type': 'Organization', name: 'Improbability Works' },
+    developer: { '@type': 'Organization', name: 'Improbability Works' },
+    ...(g.data.steamUrl ? { url: g.data.steamUrl } : {}),
+  })),
+];
+---
+
+<BaseLayout locale={locale} slug="home" title={title} description={description} jsonLd={jsonLd}>
+  <Hero locale={locale} />
+  <Manifesto locale={locale} />
+  {games.map((game) => <GameSection game={game} />)}
+  <Roadmap locale={locale} />
+  <Team locale={locale} />
+  <Newsletter locale={locale} />
+</BaseLayout>

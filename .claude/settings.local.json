@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(du -sh /Users/william.pottier/Projects/improbabilityworks/dist/en/index.html /Users/william.pottier/Projects/improbabilityworks/dist/_astro/*.css)",
+      "Bash(npm view *)",
+      "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\(v.slice\\(-10\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\(v.filter\\(x=>x.startsWith\\('5.'\\)\\).slice\\(-6\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); console.log\\(v.slice\\(-5\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node -e \"const en = require\\('./src/i18n/en.json'\\); console.log\\(JSON.stringify\\(en.manifesto, null, 2\\)\\)\")",
+      "Bash(node -e \"const fr = require\\('./src/i18n/fr.json'\\); console.log\\(JSON.stringify\\(fr.manifesto, null, 2\\)\\)\")",
+      "Bash(node -e \"const en = require\\('./src/i18n/en.json'\\); console.log\\(JSON.stringify\\(en.hero, null, 2\\)\\)\")"
+    ]
+  }
+}

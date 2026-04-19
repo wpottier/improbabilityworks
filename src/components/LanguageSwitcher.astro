@@ -1,0 +1,41 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { LOCALES, type Locale, SLUG_MAP } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+  slug: string;
+  variant?: 'nav' | 'footer';
+}
+const { locale, slug, variant = 'nav' } = Astro.props;
+
+const target: Locale = locale === 'en' ? 'fr' : 'en';
+
+// SLUG_MAP maps a canonical slug (e.g. "legal") to its locale-specific path segment
+// (e.g. "mentions-legales" in FR). getRelativeLocaleUrl then adds the locale prefix.
+const targetSlug = SLUG_MAP[slug]?.[target] ?? '';
+const href = getRelativeLocaleUrl(target, targetSlug);
+
+const label  = target === 'fr' ? 'Français' : 'English';
+const short  = target.toUpperCase();
+---
+<a
+  href={href}
+  hreflang={target}
+  aria-label={`Switch language to ${label}`}
+  class:list={[
+    'inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.22em] uppercase transition-colors',
+    variant === 'nav' ? 'text-silver-cool/70 hover:text-parchment' : 'text-silver-cool/60 hover:text-parchment',
+  ]}
+>
+  <span aria-hidden="true" class="text-gold-warm/70">◆</span>
+  <span class="sr-only">{label}</span>
+  <span aria-hidden="true">
+    {LOCALES.map((l) => (
+      <span class:list={[l === locale ? 'text-gold-bright' : 'text-silver-cool/50', 'mx-0.5']}>
+        {l.toUpperCase()}
+      </span>
+    ))}
+  </span>
+  <span class="sr-only">(current: {locale.toUpperCase()}, switch to {short})</span>
+</a>

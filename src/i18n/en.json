@@ -1,0 +1,161 @@
+{
+  "site": {
+    "studioName": "Improbability Works",
+    "studioTagline": "Worlds that only work because they shouldn't.",
+    "gameName": "Velvet Door",
+    "gameTagline": "Chicago, 1929. The night is yours to organize."
+  },
+  "nav": {
+    "studio": "Studio",
+    "manifesto": "Manifesto",
+    "game": "Velvet Door",
+    "roadmap": "Roadmap",
+    "team": "Team",
+    "newsletter": "Dispatch",
+    "skipToContent": "Skip to content",
+    "ariaLabel": "Main navigation",
+    "languageLabel": "Language"
+  },
+  "hero": {
+    "eyebrow": "Independent game studio",
+    "title": "Improbability Works",
+    "tagline": "Worlds that only work because they shouldn't.",
+    "body": "Independent studio crafting cooperative experiences where elegance, chaos, and human organization collide.",
+    "ctaPrimary": "Discover Velvet Door",
+    "ctaSecondary": "Join Discord",
+    "scrollCue": "Scroll"
+  },
+  "manifesto": {
+    "eyebrow": "Manifesto",
+    "title": "Five convictions. No asterisks.",
+    "intro": "What the studio actually believes. Not a style guide — a set of refusals.",
+    "pillars": [
+      {
+        "number": "01",
+        "title": "Independence, not isolation",
+        "body": "Being independent means answering to the work, not a quarterly target. Traditional publisher pressure — milestone gates, forced timelines, genre mandates — is a no. Collaboration with publishers who genuinely respect the project is something else. Independence is about keeping the thread, not refusing every helping hand."
+      },
+      {
+        "number": "02",
+        "title": "Systems, not scripts",
+        "body": "We build games the way you plant a garden, not the way you write a play. Interesting things emerge from systems in collision. Scripts close down possibilities. Systems multiply them."
+      },
+      {
+        "number": "03",
+        "title": "Better with someone else",
+        "body": "The most interesting things happen when humans must coordinate, negotiate, and improvise together under pressure. Not a dogma about form — cooperative, competitive, asymmetric — the game decides. But the territory worth exploring is almost always human organization at its most fragile."
+      },
+      {
+        "number": "04",
+        "title": "Earned discovery",
+        "body": "A well-built system teaches itself through what it is. Consequences follow from actions. The interface reflects the reality. You learn at whatever pace you choose — there's no single right way through a game that trusts you to find your own. Tutorials aren't the problem. Condescension is."
+      },
+      {
+        "number": "05",
+        "title": "The experience is the point",
+        "body": "Not genre exercises. Every game should deliver what only games can: fun that only makes sense once you've had it, a story that belongs to the people who played it, a moment worth keeping. Mechanics are vocabulary, not purpose. A mechanic you can't feel has no business being there."
+      }
+    ]
+  },
+  "roadmap": {
+    "eyebrow": "Roadmap",
+    "title": "Built in the open, at an honest pace.",
+    "intro": "No ship dates we don't mean. Follow along on Discord for week-by-week devlog.",
+    "stages": [
+      {
+        "label": "Now",
+        "title": "Vertical slice in development",
+        "body": "One night, one speakeasy, all core systems wired end-to-end."
+      },
+      {
+        "label": "Next",
+        "title": "Closed playtest (Valve Playtest)",
+        "body": "Small, invite-only. We want tables of friends, not strangers."
+      },
+      {
+        "label": "Soon",
+        "title": "Steam Early Access",
+        "body": "Because the game is about your table's stories, it needs tables."
+      },
+      {
+        "label": "Later",
+        "title": "Full release",
+        "body": "When the evenings are worth remembering without us explaining why."
+      }
+    ],
+    "ctaDiscord": "Follow along on Discord"
+  },
+  "team": {
+    "eyebrow": "Studio",
+    "title": "A studio of one, for now.",
+    "intro": "Small on purpose. Slower on purpose. Accountable on purpose.",
+    "member": {
+      "name": "Will",
+      "role": "Founder & solo developer",
+      "bio": "Solo developer building Velvet Door. Blueprint-first, coffee-driven, obsessed with systems that tell stories. Based in France.",
+      "links": {
+        "bluesky": "Bluesky",
+        "mastodon": "Mastodon",
+        "github": "GitHub"
+      }
+    }
+  },
+  "newsletter": {
+    "eyebrow": "The Dispatch",
+    "title": "Major updates only, delivered when they matter.",
+    "body": "Low traffic. Major milestones and closed playtest invites. No spam, ever.",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@domain.com",
+    "submit": "Get the dispatch",
+    "consent": "I agree to receive occasional emails from Improbability Works about Velvet Door and studio news. I can unsubscribe at any time.",
+    "consentRequired": "Required",
+    "privacyLink": "Privacy policy"
+  },
+  "footer": {
+    "tagline": "Worlds that only work because they shouldn't.",
+    "colStudio": "Studio",
+    "colGame": "Game",
+    "colLegal": "Legal",
+    "colSocial": "Elsewhere",
+    "links": {
+      "manifesto": "Manifesto",
+      "team": "Team",
+      "newsletter": "Dispatch",
+      "velvetDoor": "Velvet Door",
+      "wishlist": "Wishlist on Steam",
+      "pressKit": "Press kit",
+      "discord": "Discord",
+      "bluesky": "Bluesky",
+      "mastodon": "Mastodon",
+      "github": "GitHub",
+      "legalNotice": "Legal notice",
+      "eula": "EULA",
+      "privacy": "Privacy policy"
+    },
+    "madeIn": "Made with improbability in France.",
+    "copyright": "\u00a9 {year} Improbability Works. All rights reserved."
+  },
+  "legal": {
+    "notice": {
+      "title": "Legal notice",
+      "metaDescription": "Legal information for Improbability Works and improbabilityworks.com."
+    },
+    "eula": {
+      "title": "EULA",
+      "metaDescription": "End-user license agreement for improbabilityworks.com."
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "metaDescription": "How Improbability Works handles personal data."
+    }
+  },
+  "meta": {
+    "homeTitle": "Improbability Works \u2014 Cooperative games worth remembering",
+    "homeDescription": "Independent game studio crafting cooperative experiences where elegance, chaos, and human organization collide. Makers of Velvet Door.",
+    "ogAlt": "Improbability Works \u2014 Worlds that only work because they shouldn't."
+  },
+  "a11y": {
+    "logoAlt": "Improbability Works portal logo",
+    "decorative": "Decorative"
+  }
+}

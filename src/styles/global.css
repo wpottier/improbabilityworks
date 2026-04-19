@@ -1,0 +1,257 @@
+/* Fonts (self-hosted via @fontsource) */
+@import '@fontsource-variable/fraunces/index.css';
+@import '@fontsource-variable/manrope/index.css';
+@import '@fontsource/cinzel/400.css';
+@import '@fontsource/cinzel/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-deep: #050814;
+  --ink-night: #0B0E26;
+  --portal-blue: #2B4DDB;
+  --portal-violet: #6B3FD4;
+  --portal-cyan: #8FD0FF;
+  --gold-warm: #D4AF6A;
+  --gold-bright: #F5D98E;
+  --silver-cool: #C9CDD6;
+  --parchment: #F2E8D0;
+
+  --velvet-noir: #0A0605;
+  --velvet-burgundy: #4A1420;
+  --velvet-gold: #C9A875;
+  --velvet-ivory: #EDE4D0;
+
+  --focus-ring: 0 0 0 2px var(--ink-deep), 0 0 0 4px var(--gold-bright);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color-scheme: dark;
+  }
+
+  body {
+    font-family: theme('fontFamily.sans');
+    background-color: var(--ink-deep);
+    color: var(--silver-cool);
+    font-feature-settings: 'ss01', 'cv11';
+  }
+
+  ::selection {
+    background: var(--gold-warm);
+    color: var(--ink-deep);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+    border-radius: 2px;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--parchment);
+    font-family: theme('fontFamily.display');
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  p {
+    line-height: 1.65;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .container-editorial {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .container-wide {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+  }
+
+  .eyebrow {
+    font-family: theme('fontFamily.mono');
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-warm);
+  }
+
+  .eyebrow-deco {
+    font-family: theme('fontFamily.deco');
+    font-size: 0.75rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--velvet-gold);
+  }
+
+  .headline-monument {
+    font-family: theme('fontFamily.display');
+    font-weight: 400;
+    font-size: clamp(3rem, 11vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    background: linear-gradient(180deg, #E9EEF7 0%, var(--silver-cool) 45%, var(--gold-warm) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-variation-settings: 'opsz' 144, 'SOFT' 50;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.4rem;
+    font-family: theme('fontFamily.sans');
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    transition: transform 400ms ease-out, background-color 400ms ease-out, color 400ms ease-out, border-color 400ms ease-out, box-shadow 400ms ease-out;
+    will-change: transform;
+  }
+
+  .btn-primary {
+    background: var(--gold-bright);
+    color: var(--ink-deep);
+    box-shadow: 0 0 0 1px rgba(245, 217, 142, 0.6), 0 10px 30px -18px rgba(245, 217, 142, 0.7);
+  }
+
+  .btn-primary:hover {
+    background: #FFE6A2;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--silver-cool);
+    border: 1px solid rgba(201, 205, 214, 0.35);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--portal-cyan);
+    color: var(--parchment);
+  }
+
+  .btn-velvet {
+    background: var(--velvet-gold);
+    color: var(--velvet-noir);
+    box-shadow: 0 0 0 1px rgba(201, 168, 117, 0.5), 0 12px 28px -20px rgba(201, 168, 117, 0.8);
+  }
+
+  .btn-velvet:hover {
+    background: #DEB98B;
+    transform: translateY(-1px);
+  }
+
+  .btn-disabled {
+    background: transparent;
+    color: rgba(237, 228, 208, 0.35);
+    border: 1px dashed rgba(201, 168, 117, 0.35);
+    cursor: not-allowed;
+  }
+
+  .rule-gold {
+    display: inline-block;
+    width: 3rem;
+    height: 1px;
+    background: var(--gold-warm);
+  }
+
+  .rule-velvet {
+    display: inline-block;
+    width: 3rem;
+    height: 1px;
+    background: var(--velvet-gold);
+  }
+
+  /* Deco frame used around Velvet Door feature blocks */
+  .deco-frame {
+    position: relative;
+    padding: 1.5rem;
+  }
+  .deco-frame::before,
+  .deco-frame::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--velvet-gold);
+  }
+  .deco-frame::before {
+    top: 0;
+    left: 0;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .deco-frame::after {
+    bottom: 0;
+    right: 0;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  /* Reveal on scroll via intersection CSS (no JS required for basic case) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 700ms ease-out, transform 700ms ease-out;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
+    mix-blend-mode: overlay;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .grain-overlay--heavy::after {
+    opacity: 0.1;
+  }
+}

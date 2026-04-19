@@ -1,0 +1,21 @@
+---
+/**
+ * Section — custom MDX component for numbered legal sections.
+ * Usage in .mdx files:
+ *   <Section id="publisher" num="§1" title="Publisher">
+ *   Content here (markdown is parsed inside the slot).
+ *   </Section>
+ */
+interface Props {
+  id: string;
+  num: string;
+  title: string;
+}
+const { id, num, title } = Astro.props;
+---
+<section aria-labelledby={`section-${id}`}>
+  <h2 id={`section-${id}`} class="scroll-mt-24">
+    <span class="section-num" aria-hidden="true">{num}</span>{title}
+  </h2>
+  <slot />
+</section>

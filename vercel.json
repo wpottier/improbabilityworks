@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    { "source": "/en/legal/",   "destination": "/legal/",   "permanent": true },
+    { "source": "/en/eula/",    "destination": "/eula/",    "permanent": true },
+    { "source": "/en/privacy/", "destination": "/privacy/", "permanent": true },
+    { "source": "/en",          "destination": "/",         "permanent": true },
+    { "source": "/en/",         "destination": "/",         "permanent": true }
+  ]
+}
