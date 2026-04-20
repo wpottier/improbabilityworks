@@ -59,7 +59,7 @@ npm run preview  # serve dist locally
 - Default locale: **English**, served at `/en/`
 - Alternate locale: **French**, served at `/fr/`
 - `/` redirects client-side via `navigator.language` (meta-refresh fallback → EN)
-- `src/i18n/utils.ts` exposes `t()`, a `SLUG_MAP` so the language switcher preserves the current page across locales (e.g. `/en/privacy/` ↔ `/fr/confidentialite/`), and `hreflangAlternates()` for `<link rel="alternate">` injection.
+- `src/i18n/utils.ts` exposes `t()`, a `SLUG_MAP` so the language switcher preserves the current page across locales (e.g. `/privacy/` ↔ `/fr/confidentialite/`), and `hreflangAlternates()` for `<link rel="alternate">` injection.
 - All copy lives in `src/i18n/en.json` and `src/i18n/fr.json`. **Zero hard-coded user-visible strings in components.**
 
 ## Accessibility
