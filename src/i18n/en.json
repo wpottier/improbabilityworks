@@ -138,8 +138,6 @@
   "legal": {
     "layout": {
       "lastUpdated": "Last updated",
-      "draft": "Pending review",
-      "draftNotice": "This document has not yet been reviewed by a legal professional. Do not rely on it as legal advice.",
       "breadcrumbHome": "Home",
       "backHome": "Back to home"
     },
