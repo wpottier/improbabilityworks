@@ -136,17 +136,22 @@
     "copyright": "\u00a9 {year} Improbability Works. Tous droits r\u00e9serv\u00e9s."
   },
   "legal": {
+    "layout": {
+      "lastUpdated": "Derni\u00e8re mise \u00e0 jour",
+      "breadcrumbHome": "Accueil",
+      "backHome": "Retour \u00e0 l\u2019accueil"
+    },
     "notice": {
       "title": "Mentions l\u00e9gales",
-      "metaDescription": "Informations l\u00e9gales d\u2019Improbability Works et du site improbabilityworks.com."
+      "metaDescription": "Informations l\u00e9gales d\u2019Improbability Works et du site improbabilityworks.studio."
     },
     "eula": {
       "title": "CLUF",
-      "metaDescription": "Contrat de licence utilisateur final pour improbabilityworks.com."
+      "metaDescription": "Contrat de licence utilisateur final r\u00e9gissant l\u2019utilisation des jeux vid\u00e9o publi\u00e9s par Improbability Works."
     },
     "privacy": {
       "title": "Politique de confidentialit\u00e9",
-      "metaDescription": "Comment Improbability Works traite les donn\u00e9es personnelles."
+      "metaDescription": "Comment Improbability Works collecte, utilise et prot\u00e8ge vos donn\u00e9es personnelles \u2014 sur le site du studio et dans ses jeux vid\u00e9o."
     }
   },
   "meta": {

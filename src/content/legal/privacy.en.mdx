@@ -3,103 +3,174 @@ locale: en
 canonical: privacy
 urlSlug: privacy
 title: Privacy policy
-description: How Improbability Works handles personal data.
-lastUpdated: 2026-04-18
+description: How Improbability Works collects, uses, and protects your personal data — on the studio website and in its video games.
+lastUpdated: 2026-04-20
 ---
 
-Improbability Works ("we", "us") respects your privacy. This policy explains, in plain language, what personal data we collect on [improbabilityworks.com](https://improbabilityworks.com), why, how long we keep it, and the rights you have under the EU General Data Protection Regulation (GDPR) and the French Data Protection Act.
+Improbability Works ("we", "us") is committed to protecting your personal data. This policy describes what data we collect, why, how long we keep it, who has access, and the rights you hold under the EU General Data Protection Regulation (GDPR / Regulation (EU) 2016/679) and the French Data Protection Act (*Loi Informatique et Libertés*, as amended).
 
 <Section id="controller" num="§1" title="Data controller">
 
-The data controller is **Improbability Works**, based in France.
+The data controller is:
 
-Contact: [privacy@improbabilityworks.com](mailto:privacy@improbabilityworks.com)
+**Improbability Works** — William Pottier  
+87 avenue Léon Blum, 33110 Le Bouscat, France  
+SIREN 515 215 390  
+Contact: [hello@improbabilityworks.studio](mailto:hello@improbabilityworks.studio)
 
-{/* TODO LEGAL: confirm whether a DPO is designated. Small structures below the GDPR threshold are not obligated. */}
-
-We have *not* designated a Data Protection Officer (DPO) as we operate below the GDPR threshold that would require one. The contact above handles all privacy-related requests.
+We have not designated a Data Protection Officer (DPO), as our processing activities fall below the thresholds making such designation mandatory. All privacy-related requests should be directed to the contact above.
 
 </Section>
 
-<Section id="data-collected" num="§2" title="What we collect">
+<Section id="scope" num="§2" title="Scope of this policy">
+
+This policy covers two distinct contexts, each with its own data-collection profile:
+
+1. **The studio website** ([improbabilityworks.studio](https://improbabilityworks.studio)) — a static informational site with a newsletter subscription form. No user accounts, no purchases, no in-browser game sessions.
+
+2. **Improbability Works games** (including *Velvet Door*) — distributed via Steam and/or Epic Games Store. Games involve online multiplayer sessions and are subject to their distribution platforms' own privacy policies.
+
+</Section>
+
+<Section id="website-data" num="§3" title="Website — data collected">
 
 ### Newsletter subscription
 
-If you subscribe to our newsletter ("the Dispatch"), we collect your **email address** and the timestamp of your consent. We do not collect your name, IP address, or device fingerprint.
+The newsletter ("the Dispatch") is not currently active. When it opens, this section will be updated to describe the data collected (email address, consent timestamp), the provider used, and the applicable legal basis before any subscription form goes live.
 
-### Server logs
+### Hosting and server logs
 
-Our hosting provider stores minimal HTTP logs (IP address, user-agent, URL requested, timestamp) for the purpose of operating and securing the site. These logs are retained for a short period by the provider and are not correlated with newsletter or other personal data.
+Our hosting provider automatically records standard HTTP request logs (IP address, HTTP method, URL requested, response code, user-agent, timestamp) for the purpose of operating and securing the service. These logs are held by the provider and are not cross-referenced with newsletter data.
 
 ### Analytics
 
-{/* TODO LEGAL: if Plausible or Umami is enabled later, state it here explicitly. Both are cookieless. */}
+{/* TODO: if Plausible or a similar cookieless tool is activated, update this section before it goes live. */}
 
-By default, we do **not** use Google Analytics or any other tracker that identifies you. If we enable privacy-friendly, cookieless analytics (e.g. Plausible or Umami) in the future, this page will be updated before the tracker goes live.
+We do not currently use any analytics tool. Should we activate privacy-friendly, cookieless analytics (such as Plausible or Umami) in the future, this policy will be updated **before** the tool goes live.
 
-### Cookies
+### Cookies and local storage
 
-This site sets no tracking or advertising cookies. Only strictly technical local storage may be used to remember your language preference. Because no non-essential cookies are used, no cookie banner is shown — consistent with the guidance from the French CNIL.
-
-</Section>
-
-<Section id="purpose" num="§3" title="Why we collect it">
-
-- **Newsletter email:** to send you occasional updates about Velvet Door and the studio.
-- **Server logs:** to operate and secure the site, prevent abuse, and diagnose incidents.
+This website sets **no tracking or advertising cookies**. A minimal localStorage entry may be used to remember your language preference (English / French); it contains no personal data and is never sent to a server. No cookie consent banner is displayed, consistent with CNIL guidance on strictly necessary cookies.
 
 </Section>
 
-<Section id="legal-basis" num="§4" title="Legal basis">
+<Section id="games-data" num="§4" title="Games — data collected">
 
-- Newsletter: your **explicit consent** (GDPR art. 6(1)(a)).
-- Server logs: our **legitimate interest** in operating a safe, functioning site (GDPR art. 6(1)(f)).
+### Platform-managed data
 
-</Section>
+Games distributed through Steam (Valve Corporation) and/or Epic Games Store (Epic Games Inc.) are subject to those platforms' own privacy policies. Each platform may collect account data, purchase history, playtime, and usage statistics independently. We encourage you to review:
 
-<Section id="retention" num="§5" title="How long we keep it">
+- Valve Privacy Policy: [https://store.steampowered.com/privacy_agreement](https://store.steampowered.com/privacy_agreement)
+- Epic Games Privacy Policy: [https://www.epicgames.com/site/en-US/privacypolicy](https://www.epicgames.com/site/en-US/privacypolicy)
 
-- Newsletter: for as long as you stay subscribed. Unsubscribing removes your address from active lists within 30 days.
-- Server logs: retained by the hosting provider for the minimum period required for security and operations (typically under 12 months).
+### Multiplayer session data
 
-</Section>
+When you participate in an online multiplayer session in *Velvet Door* (cooperative play for 2–4 players), the following technical data is processed to establish and maintain the session:
 
-<Section id="sharing" num="§6" title="Who has access">
+- **IP addresses** of connected players, processed transiently to route game traffic. IP addresses are not stored beyond the duration of the active session.
+- **Platform identifiers** (Steam ID or equivalent), used to identify players within a session and enforce platform-level restrictions (bans, etc.).
+- **Session metadata** (connection timestamps, latency measurements, session duration), retained for a maximum of **30 days** for the purpose of diagnosing connectivity issues.
 
-Your email address is handled by our newsletter provider under a data-processing agreement.
+No persistent player profiles, behavioural analytics, or advertising identifiers are maintained by Improbability Works from in-game data.
 
-{/* TODO LEGAL: confirm the final newsletter provider (Buttondown / Resend / ConvertKit) and state its location + DPA link. */}
+### Save data and game state
 
-- Newsletter provider: *\[to confirm — Buttondown / Resend / ConvertKit\]*
-- Hosting provider: *\[to confirm — Netlify / Vercel / Cloudflare Pages\]*
+Game progress is stored locally on your device and, where Steam Cloud is enabled, synchronised to Valve's servers under their own privacy policy. Improbability Works does not have access to your local save data.
 
-We do not sell, rent, or otherwise share your personal data for marketing purposes.
+### Crash reports and diagnostics
 
-</Section>
+Crash reporting at launch is handled exclusively through the platform SDKs integrated in the Game — specifically the **Steamworks SDK** (Valve Corporation) and the **Epic Online Services SDK** (Epic Games Inc.). Crash data collected through these integrations is processed by the respective platform under their own privacy policies, not by Improbability Works directly.
 
-<Section id="transfers" num="§7" title="International transfers">
-
-Some of our providers are based outside the European Economic Area (typically in the United States). Transfers, where they occur, rely on the European Commission's Standard Contractual Clauses and, where applicable, the EU-US Data Privacy Framework.
+Improbability Works does not independently receive, store, or process crash dumps or diagnostic reports. Should we integrate a standalone crash-reporting tool in a future update, this policy will be updated before the feature ships and collection will be clearly disclosed in-game.
 
 </Section>
 
-<Section id="rights" num="§8" title="Your rights">
+<Section id="processors" num="§5" title="Third-party processors">
 
-Under the GDPR, you have the right to:
+We rely on the following sub-processors:
 
-- Access the personal data we hold about you;
-- Request correction of inaccurate data;
-- Request deletion of your data ("right to erasure");
-- Withdraw your consent at any time;
-- Object to processing based on legitimate interest;
-- Lodge a complaint with a supervisory authority — in France, the CNIL ([cnil.fr](https://www.cnil.fr)).
+| Processor | Role | Location | Privacy policy |
+|---|---|---|---|
+| Valve Corporation | Game distribution, multiplayer (Steam) | USA | [Link](https://store.steampowered.com/privacy_agreement) |
+| Epic Games Inc. | Game distribution (EGS) | USA | [Link](https://www.epicgames.com/site/en-US/privacypolicy) |
+| Cloudflare, Inc. | Website hosting and CDN | USA (global PoPs) | [Link](https://www.cloudflare.com/privacypolicy/) |
 
-To exercise any of these rights, email [privacy@improbabilityworks.com](mailto:privacy@improbabilityworks.com). We respond within 30 days.
+We do not sell, rent, or share your personal data with any third party for marketing or advertising purposes.
 
 </Section>
 
-<Section id="updates" num="§9" title="Updates to this policy">
+<Section id="legal-basis" num="§6" title="Legal basis for processing">
 
-We may update this policy to reflect changes in our practices or in the law. The "Last updated" date at the top of this page reflects the most recent version. Material changes will be highlighted on the site for a reasonable period.
+| Processing activity | Legal basis (GDPR art. 6) |
+|---|---|
+| Server logs — site security | Legitimate interest — art. 6(1)(f) |
+| Multiplayer session routing | Contract performance / legitimate interest — art. 6(1)(b)/(f) |
+| Session diagnostics | Legitimate interest — art. 6(1)(f) |
+
+Where we rely on legitimate interest, we have assessed that our interest does not override your rights and freedoms as a data subject.
+
+</Section>
+
+<Section id="retention" num="§7" title="Data retention">
+
+| Data | Retention period |
+|---|---|
+| Server logs | As required by Cloudflare for security (typically ≤ 30 days for edge logs) |
+| Multiplayer session metadata | 30 days maximum |
+| IP addresses (session routing) | Not stored beyond the active session |
+
+</Section>
+
+<Section id="transfers" num="§8" title="International data transfers">
+
+Some processors are established outside the European Economic Area, notably in the United States. Where personal data is transferred outside the EEA, we rely on:
+
+- **Standard Contractual Clauses (SCCs)** approved by the European Commission; and/or
+- The **EU–US Data Privacy Framework**, where the recipient is certified.
+
+You may request a copy of the applicable safeguards by contacting [hello@improbabilityworks.studio](mailto:hello@improbabilityworks.studio).
+
+</Section>
+
+<Section id="rights" num="§9" title="Your rights">
+
+Under the GDPR and French law, you have the right to:
+
+- **Access** — obtain confirmation of whether we process data about you, and receive a copy;
+- **Rectification** — request correction of inaccurate or incomplete data;
+- **Erasure** ("right to be forgotten") — request deletion of your data, where no legal ground overrides;
+- **Restriction** — request that we limit processing in certain circumstances;
+- **Portability** — receive your data in a structured, machine-readable format;
+- **Objection** — object to processing based on legitimate interest;
+- **Withdrawal of consent** — withdraw any consent given, at any time, without affecting the lawfulness of prior processing.
+
+To exercise any of these rights, contact [hello@improbabilityworks.studio](mailto:hello@improbabilityworks.studio). We will respond within **30 days** (extendable to 3 months for complex requests, with prior notice).
+
+If you believe your rights have not been respected, you may lodge a complaint with the **CNIL** (Commission Nationale de l'Informatique et des Libertés): [https://www.cnil.fr](https://www.cnil.fr).
+
+</Section>
+
+<Section id="children" num="§10" title="Children's privacy">
+
+Our games are not directed at children under 13, and we do not knowingly collect personal data from children under 13 (or under 16 in jurisdictions where a higher age applies for consent). If we become aware that a child under the applicable age has provided personal data without verifiable parental consent, we will delete that data promptly.
+
+If you believe a child has submitted data to us, please contact [hello@improbabilityworks.studio](mailto:hello@improbabilityworks.studio).
+
+</Section>
+
+<Section id="updates" num="§11" title="Updates to this policy">
+
+We may update this policy to reflect changes in our practices, services, or applicable law. The "Last updated" date at the top of this page reflects the most recent version. For material changes, we will provide reasonable notice on our website or through in-game notifications. Continued use of the website or our games after a material change constitutes acceptance of the updated policy.
+
+</Section>
+
+<Section id="contact" num="§12" title="Contact">
+
+For any question about this policy or to exercise your rights, contact:
+
+[hello@improbabilityworks.studio](mailto:hello@improbabilityworks.studio)
+
+**Improbability Works** — William Pottier  
+87 avenue Léon Blum, 33110 Le Bouscat, France
 
 </Section>

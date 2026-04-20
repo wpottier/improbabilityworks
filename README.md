@@ -59,7 +59,7 @@ npm run preview  # serve dist locally
 - Default locale: **English**, served at `/en/`
 - Alternate locale: **French**, served at `/fr/`
 - `/` redirects client-side via `navigator.language` (meta-refresh fallback → EN)
-- `src/i18n/utils.ts` exposes `t()`, a `SLUG_MAP` so the language switcher preserves the current page across locales (e.g. `/en/privacy/` ↔ `/fr/confidentialite/`), and `hreflangAlternates()` for `<link rel="alternate">` injection.
+- `src/i18n/utils.ts` exposes `t()`, a `SLUG_MAP` so the language switcher preserves the current page across locales (e.g. `/privacy/` ↔ `/fr/confidentialite/`), and `hreflangAlternates()` for `<link rel="alternate">` injection.
 - All copy lives in `src/i18n/en.json` and `src/i18n/fr.json`. **Zero hard-coded user-visible strings in components.**
 
 ## Accessibility
@@ -93,7 +93,7 @@ Search the repo for `TODO` and `TODO LEGAL` to find every placeholder. Summary:
 
 ### Brand / contact
 
-- [ ] Replace `hello@improbabilityworks.com` and `privacy@improbabilityworks.com` if different addresses are final.
+- [ ] Replace `hello@improbabilityworks.studio` and `hello@improbabilityworks.studio` if different addresses are final.
 - [ ] Replace the founder public handle (currently displayed as `Will` — search for `FOUNDER_HANDLE` comment in `src/components/Team.astro`).
 - [ ] Replace `/team/founder-avatar.svg` with the final avatar (keep 1:1 ratio, 260×260+).
 - [ ] Replace 6 placeholders under `public/screens/` with real Velvet Door screenshots (1920×1080 recommended).
@@ -103,7 +103,7 @@ Search the repo for `TODO` and `TODO LEGAL` to find every placeholder. Summary:
 - [ ] Replace `STEAM_APP_ID` placeholder in `src/components/GameSection.astro`, `src/components/Footer.astro`, and JSON-LD blocks in `src/pages/{en,fr}/index.astro` with the real Velvet Door Steam app id.
 - [ ] Replace every `href="#"` Discord / Bluesky / Mastodon / GitHub placeholder in `Hero`, `Roadmap`, `Team`, and `Footer` with final URLs. Add them also to the JSON-LD `sameAs` arrays in both `index.astro` files.
 - [ ] Replace `#press-kit` with the final press-kit page or ZIP URL.
-- [ ] Update `astro.config.mjs` `SITE` constant if the production domain is not `https://improbabilityworks.com`.
+- [ ] Update `astro.config.mjs` `SITE` constant if the production domain is not `https://improbabilityworks.studio`.
 
 ### Newsletter wiring
 
