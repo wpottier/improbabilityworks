@@ -93,7 +93,7 @@ Search the repo for `TODO` and `TODO LEGAL` to find every placeholder. Summary:
 
 ### Brand / contact
 
-- [ ] Replace `hello@improbabilityworks.studio` and `privacy@improbabilityworks.studio` if different addresses are final.
+- [ ] Replace `hello@improbabilityworks.studio` and `hello@improbabilityworks.studio` if different addresses are final.
 - [ ] Replace the founder public handle (currently displayed as `Will` — search for `FOUNDER_HANDLE` comment in `src/components/Team.astro`).
 - [ ] Replace `/team/founder-avatar.svg` with the final avatar (keep 1:1 ratio, 260×260+).
 - [ ] Replace 6 placeholders under `public/screens/` with real Velvet Door screenshots (1920×1080 recommended).
