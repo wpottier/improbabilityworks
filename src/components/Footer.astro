@@ -43,7 +43,8 @@ const copyright = t('footer.copyright', locale).replace('{year}', String(year));
         <ul class="mt-4 space-y-2 text-sm text-silver-cool/80">
           <li><a class="hover:text-parchment" href={`${home}#manifesto`}>{t('footer.links.manifesto', locale)}</a></li>
           <li><a class="hover:text-parchment" href={`${home}#team`}>{t('footer.links.team', locale)}</a></li>
-          <li><a class="hover:text-parchment" href={`${home}#dispatch`}>{t('footer.links.newsletter', locale)}</a></li>
+          {/* Newsletter hidden until provider is configured. */}
+          {/* <li><a class="hover:text-parchment" href={`${home}#dispatch`}>{t('footer.links.newsletter', locale)}</a></li> */}
         </ul>
       </div>
 

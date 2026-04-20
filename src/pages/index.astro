@@ -10,7 +10,8 @@ import Manifesto from '../components/Manifesto.astro';
 import GameSection from '../components/GameSection.astro';
 import Roadmap from '../components/Roadmap.astro';
 import Team from '../components/Team.astro';
-import Newsletter from '../components/Newsletter.astro';
+// Newsletter hidden until provider is configured.
+// import Newsletter from '../components/Newsletter.astro';
 import { t } from '../i18n/utils';
 
 const locale = 'en' as const;
@@ -57,5 +58,5 @@ const jsonLd = [
   {games.map((game) => <GameSection game={game} />)}
   <Roadmap locale={locale} />
   <Team locale={locale} />
-  <Newsletter locale={locale} />
+  {/* <Newsletter locale={locale} /> */}
 </BaseLayout>
