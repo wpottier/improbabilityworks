@@ -53,6 +53,6 @@
 
   <!-- Bottom rule + URL -->
   <line x1="80" y1="560" x2="1120" y2="560" stroke="#D4AF6A" stroke-opacity="0.3" stroke-width="0.8"/>
-  <text x="80" y="595" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="2" fill="#C9CDD6">improbabilityworks.com</text>
+  <text x="80" y="595" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="2" fill="#C9CDD6">improbabilityworks.studio</text>
   <text x="1120" y="595" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="16" letter-spacing="2" fill="#C9CDD6">— EN</text>
 </svg>

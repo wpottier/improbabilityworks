@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 import robotsTxt from 'astro-robots-txt';
 
 // TODO: replace with final production URL before going live.
-const SITE = 'https://improbabilityworks.com';
+const SITE = 'https://improbabilityworks.studio';
 
 export default defineConfig({
   site: SITE,
