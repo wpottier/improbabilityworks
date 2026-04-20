@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import BaseLayout from './BaseLayout.astro';
-import { type Locale } from '../i18n/utils';
+import { t, htmlLang, type Locale } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
@@ -16,19 +16,9 @@ interface Props {
 
 const { locale, slug, title, description, lastUpdated } = Astro.props;
 
-const lastUpdatedDate = new Intl.DateTimeFormat(locale === 'fr' ? 'fr-FR' : 'en-US', {
+const lastUpdatedDate = new Intl.DateTimeFormat(htmlLang(locale), {
   year: 'numeric', month: 'long', day: 'numeric',
 }).format(lastUpdated);
-
-const labels = {
-  lastUpdated:  locale === 'fr' ? 'Dernière mise à jour' : 'Last updated',
-  draft:        locale === 'fr' ? 'Brouillon' : 'Draft',
-  draftNotice:  locale === 'fr'
-    ? 'Document de départ généré automatiquement. À faire relire par un professionnel avant mise en ligne publique.'
-    : 'Auto-generated starting draft. Must be reviewed by a professional before public release.',
-  breadcrumbHome: locale === 'fr' ? 'Accueil' : 'Home',
-  backHome:     locale === 'fr' ? "Retour à l'accueil" : 'Back to home',
-};
 ---
 <!-- TODO LEGAL: This document must be reviewed by a professional before public release. Generated as a starting point. -->
 <BaseLayout
@@ -41,7 +31,7 @@ const labels = {
   <article class="container-editorial py-20 md:py-28 legal-prose">
 
     <nav aria-label="breadcrumb" class="text-xs font-mono uppercase tracking-[0.22em] text-silver-cool/50 mb-6">
-      <a href={getRelativeLocaleUrl(locale, '')} class="hover:text-parchment">{labels.breadcrumbHome}</a>
+      <a href={getRelativeLocaleUrl(locale, '')} class="hover:text-parchment">{t('legal.layout.breadcrumbHome', locale)}</a>
       <span aria-hidden="true" class="mx-2">/</span>
       <span>{title}</span>
     </nav>
@@ -49,10 +39,10 @@ const labels = {
     <header class="max-w-3xl">
       <h1 class="font-display text-4xl md:text-5xl text-parchment leading-tight">{title}</h1>
       <p class="mt-3 font-mono text-[11px] uppercase tracking-[0.24em] text-gold-warm">
-        {labels.lastUpdated} · {lastUpdatedDate}
+        {t('legal.layout.lastUpdated', locale)} · {lastUpdatedDate}
       </p>
       <aside role="note" class="mt-8 border border-gold-warm/30 bg-gold-warm/5 px-5 py-4 text-sm text-parchment/85">
-        <strong class="text-gold-bright">⚠ {labels.draft}:</strong> {labels.draftNotice}
+        <strong class="text-gold-bright">⚠ {t('legal.layout.draft', locale)}:</strong> {t('legal.layout.draftNotice', locale)}
       </aside>
     </header>
 
@@ -62,7 +52,7 @@ const labels = {
 
     <p class="mt-16 text-xs text-silver-cool/50">
       <a href={getRelativeLocaleUrl(locale, '')} class="underline underline-offset-2 hover:text-parchment">
-        ← {labels.backHome}
+        ← {t('legal.layout.backHome', locale)}
       </a>
     </p>
 

@@ -136,17 +136,24 @@
     "copyright": "\u00a9 {year} Improbability Works. All rights reserved."
   },
   "legal": {
+    "layout": {
+      "lastUpdated": "Last updated",
+      "draft": "Pending review",
+      "draftNotice": "This document has not yet been reviewed by a legal professional. Do not rely on it as legal advice.",
+      "breadcrumbHome": "Home",
+      "backHome": "Back to home"
+    },
     "notice": {
       "title": "Legal notice",
       "metaDescription": "Legal information for Improbability Works and improbabilityworks.com."
     },
     "eula": {
       "title": "EULA",
-      "metaDescription": "End-user license agreement for improbabilityworks.com."
+      "metaDescription": "End-user license agreement governing the use of video games published by Improbability Works."
     },
     "privacy": {
       "title": "Privacy policy",
-      "metaDescription": "How Improbability Works handles personal data."
+      "metaDescription": "How Improbability Works collects, uses, and protects your personal data — on the studio website and in its video games."
     }
   },
   "meta": {
