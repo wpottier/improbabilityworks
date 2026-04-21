@@ -16,6 +16,19 @@
     "ariaLabel": "Navigation principale",
     "languageLabel": "Langue"
   },
+  "games": {
+    "comingSoon": "Bientôt disponible",
+    "stores": {
+      "steam": {
+        "live": "Ajouter à la liste de souhaits Steam",
+        "comingSoon": "Bientôt sur Steam"
+      },
+      "epic": {
+        "live": "Acheter sur l'Epic Games Store",
+        "comingSoon": "Bientôt sur l'Epic Games Store"
+      }
+    }
+  },
   "hero": {
     "eyebrow": "Studio de jeu ind\u00e9pendant",
     "title": "Improbability Works",
@@ -88,17 +101,7 @@
   "team": {
     "eyebrow": "Studio",
     "title": "Un studio d\u2019une seule personne, pour l\u2019instant.",
-    "intro": "Petit volontairement. Lent volontairement. Responsable volontairement.",
-    "member": {
-      "name": "Will",
-      "role": "Fondateur & d\u00e9veloppeur solo",
-      "bio": "D\u00e9veloppeur solo derri\u00e8re Velvet Door. Blueprint en premier, caf\u00e9 en continu, obsession pour les syst\u00e8mes qui racontent des histoires. Bas\u00e9 en France.",
-      "links": {
-        "bluesky": "Bluesky",
-        "mastodon": "Mastodon",
-        "github": "GitHub"
-      }
-    }
+    "intro": "Petit volontairement. Lent volontairement. Responsable volontairement."
   },
   "newsletter": {
     "eyebrow": "La d\u00e9p\u00eache",

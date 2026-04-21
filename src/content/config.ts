@@ -59,9 +59,36 @@ const games = defineCollection({
       }),
     ),
 
-    // Links — optional so future games can omit unavailable platforms
-    steamUrl: z.string().optional(),
-    epicUrl: z.string().optional(),
+    /**
+     * Storefront buttons (Steam, Epic) — driven by per-store flags.
+     *
+     * enabled    : render the button at all. Unset it to remove the CTA entirely.
+     * comingSoon : render as a disabled "soon" button. The "Coming soon" suffix
+     *              lives in the global i18n dict (games.comingSoon).
+     * url        : destination when the store is live (enabled && !comingSoon).
+     *
+     * Button labels are not stored here — they're shared across games and live
+     * in the global i18n dict under games.stores.<key>.{live,comingSoon}.
+     */
+    stores: z
+      .object({
+        steam: z
+          .object({
+            enabled: z.boolean().default(false),
+            comingSoon: z.boolean().default(false),
+            url: z.string().optional(),
+          })
+          .optional(),
+        epic: z
+          .object({
+            enabled: z.boolean().default(false),
+            comingSoon: z.boolean().default(false),
+            url: z.string().optional(),
+          })
+          .optional(),
+      })
+      .default({}),
+
     pressKitUrl: z.string().optional(),
 
     // Gallery — ordered list of image paths relative to /public
@@ -69,9 +96,6 @@ const games = defineCollection({
 
     // Locale-specific UI labels kept inside the entry for self-containment
     ui: z.object({
-      ctaWishlist: z.string().optional(),
-      ctaEpic: z.string().optional(),
-      ctaEpicSoon: z.string().optional(),
       pressKit: z.string(),
       galleryHint: z.string(),
       pressKitNote: z.string(),
@@ -85,4 +109,40 @@ const games = defineCollection({
   }),
 });
 
-export const collections = { legal, games };
+/**
+ * Collection `members` — one MDX entry per (member × locale).
+ *
+ * memberId : canonical identifier ('will', …) pairing locale variants.
+ * order    : display order when the team grows beyond one person.
+ * avatar   : path under /public to the portrait/avatar asset.
+ * links    : social/professional links, platform-keyed so the component can
+ *            pick the right icon. Array (not object) to keep order authorial
+ *            and allow future platforms without schema churn.
+ *
+ * The MDX body carries the bio prose (rich text, formattable).
+ */
+const members = defineCollection({
+  type: 'content',
+  schema: z.object({
+    locale: z.enum(['en', 'fr']),
+    memberId: z.string(),
+    order: z.number().default(0),
+
+    name: z.string(),
+    role: z.string(),
+    avatar: z.string(),
+    avatarAlt: z.string().optional(),
+
+    links: z
+      .array(
+        z.object({
+          platform: z.enum(['bluesky', 'mastodon', 'github', 'discord', 'website']),
+          label: z.string(),
+          url: z.string(),
+        }),
+      )
+      .default([]),
+  }),
+});
+
+export const collections = { legal, games, members };

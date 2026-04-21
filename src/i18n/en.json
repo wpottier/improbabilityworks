@@ -16,6 +16,19 @@
     "ariaLabel": "Main navigation",
     "languageLabel": "Language"
   },
+  "games": {
+    "comingSoon": "Coming soon",
+    "stores": {
+      "steam": {
+        "live": "Wishlist on Steam",
+        "comingSoon": "Coming to Steam"
+      },
+      "epic": {
+        "live": "Buy on Epic Games Store",
+        "comingSoon": "Coming to Epic Games Store"
+      }
+    }
+  },
   "hero": {
     "eyebrow": "Independent game studio",
     "title": "Improbability Works",
@@ -88,17 +101,7 @@
   "team": {
     "eyebrow": "Studio",
     "title": "A studio of one, for now.",
-    "intro": "Small on purpose. Slower on purpose. Accountable on purpose.",
-    "member": {
-      "name": "Will",
-      "role": "Founder & solo developer",
-      "bio": "Solo developer building Velvet Door. Blueprint-first, coffee-driven, obsessed with systems that tell stories. Based in France.",
-      "links": {
-        "bluesky": "Bluesky",
-        "mastodon": "Mastodon",
-        "github": "GitHub"
-      }
-    }
+    "intro": "Small on purpose. Slower on purpose. Accountable on purpose."
   },
   "newsletter": {
     "eyebrow": "The Dispatch",

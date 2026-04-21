@@ -22,6 +22,9 @@ const description = t('meta.homeDescription', locale);
 const games = (await getCollection('games', ({ data }) => data.locale === locale))
   .sort((a, b) => a.data.order - b.data.order);
 
+const members = (await getCollection('members', ({ data }) => data.locale === locale))
+  .sort((a, b) => a.data.order - b.data.order);
+
 // Build JSON-LD: Organisation + one VideoGame entry per game in the collection.
 const jsonLd = [
   {
@@ -47,7 +50,9 @@ const jsonLd = [
       : {}),
     publisher: { '@type': 'Organization', name: 'Improbability Works' },
     developer: { '@type': 'Organization', name: 'Improbability Works' },
-    ...(g.data.steamUrl ? { url: g.data.steamUrl } : {}),
+    ...(g.data.stores.steam?.enabled && g.data.stores.steam.url
+      ? { url: g.data.stores.steam.url }
+      : {}),
   })),
 ];
 ---
@@ -57,6 +62,6 @@ const jsonLd = [
   <Manifesto locale={locale} />
   {games.map((game) => <GameSection game={game} />)}
   <Roadmap locale={locale} />
-  <Team locale={locale} />
+  <Team locale={locale} members={members} />
   {/* <Newsletter locale={locale} /> */}
 </BaseLayout>

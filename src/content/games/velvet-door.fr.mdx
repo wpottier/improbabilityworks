@@ -7,7 +7,7 @@ status: in-development
 eyebrow: Un jeu d'Improbability Works
 title: Velvet Door
 tagline: "Chicago, 1929. La nuit vous appartient — à vous de l'organiser."
-pitchLede: "Un jeu coopératif à la première personne, de 2 à 4 joueurs."
+pitchLede: "Un jeu coopératif à la première personne, de solo à 4 joueurs."
 
 features:
   - title: Préparation périssable
@@ -19,8 +19,14 @@ features:
   - title: Trois paliers de progression
     body: "Du bouge clandestin à l'adresse dont toute la ville parle. Chaque palier réécrit la définition d'une belle soirée."
 
-# TODO: remplacer STEAM_APP_ID par le vrai identifiant Steam de Velvet Door avant mise en ligne.
-steamUrl: "https://store.steampowered.com/app/STEAM_APP_ID/Velvet_Door/"
+stores:
+  steam:
+    enabled: true
+    comingSoon: false
+    url: "https://store.steampowered.com/app/4496760/Velvet_Door/"
+  epic:
+    enabled: true
+    comingSoon: true
 
 gallery:
   - /screens/velvet-door-1.svg
@@ -31,9 +37,6 @@ gallery:
   - /screens/velvet-door-6.svg
 
 ui:
-  ctaWishlist: Ajouter à la liste de souhaits Steam
-  ctaEpic: Bientôt sur l'Epic Games Store
-  ctaEpicSoon: Bientôt disponible
   pressKit: Dossier de presse
   galleryHint: "Aperçus du speakeasy — en cours de réalisation"
   pressKitNote: "Logos, captures en haute résolution et fiche descriptive seront disponibles ici."

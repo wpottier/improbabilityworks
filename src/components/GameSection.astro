@@ -1,5 +1,6 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
+import { t } from '../i18n/utils';
 
 interface Props {
   game: CollectionEntry<'games'>;
@@ -8,6 +9,27 @@ interface Props {
 const { game } = Astro.props;
 const { Content } = await render(game);
 const d = game.data;
+
+// Build the storefront button list from the per-store flags.
+// An enabled store without a URL (and not marked comingSoon) is treated as
+// "disabled without suffix" — almost certainly an authoring oversight, but we
+// render something rather than nothing so it's visible during review.
+const storeIcons = ['steam', 'epic'] as const;
+type StoreKey = (typeof storeIcons)[number];
+const comingSoonLabel = t('games.comingSoon', d.locale);
+
+const storeButtons = storeIcons
+  .map((key): { key: StoreKey; label: string; url?: string; isLive: boolean; isComingSoon: boolean } | null => {
+    const s = d.stores[key];
+    if (!s || !s.enabled) return null;
+    const isLive = !s.comingSoon && Boolean(s.url);
+    const label = t(
+      `games.stores.${key}.${s.comingSoon ? 'comingSoon' : 'live'}`,
+      d.locale,
+    );
+    return { key, label, url: s.url, isLive, isComingSoon: s.comingSoon };
+  })
+  .filter((b): b is NonNullable<typeof b> => b !== null);
 ---
 
 <!-- Visual transition to the speakeasy: cosmic fades out, velvet palette takes over -->
@@ -62,28 +84,34 @@ const d = game.data;
         </div>
 
         <div class="mt-10 flex flex-col sm:flex-row gap-4">
-          {d.steamUrl && d.ui.ctaWishlist && (
-            <a
-              href={d.steamUrl}
-              rel="noopener"
-              target="_blank"
-              class="btn btn-velvet"
-            >
-              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2a10 10 0 0 0-9.95 9.09l5.4 2.23a2.82 2.82 0 0 1 1.6-.49c.08 0 .16 0 .24.01l2.4-3.5v-.05a3.77 3.77 0 0 1 3.76-3.77 3.77 3.77 0 0 1 3.77 3.77 3.77 3.77 0 0 1-3.78 3.77h-.08l-3.44 2.46v.19a2.84 2.84 0 0 1-5.6.63L3.03 15a10 10 0 1 0 8.97-13Zm-4.98 15.08-1.24-.51a2.14 2.14 0 0 0 2.97 1.12 2.14 2.14 0 0 0 1.14-2.79l1.28.53a2.84 2.84 0 0 1-4.15 1.65ZM17.63 8.5a2.5 2.5 0 1 0-2.5 2.51 2.5 2.5 0 0 0 2.5-2.5Zm-4.4 0a1.89 1.89 0 0 1 3.78 0 1.89 1.89 0 0 1-3.78 0Z" />
-              </svg>
-              <span>{d.ui.ctaWishlist}</span>
-            </a>
-          )}
-          {d.ui.ctaEpic && (
-            <button type="button" class="btn btn-disabled" aria-disabled="true" disabled>
-              <span aria-hidden="true">▣</span>
-              <span>{d.ui.ctaEpic}</span>
-              {d.ui.ctaEpicSoon && (
-                <span class="ml-1 text-[10px] uppercase tracking-widest opacity-70">· {d.ui.ctaEpicSoon}</span>
-              )}
-            </button>
-          )}
+          {storeButtons.map((b) => (
+            b.isLive ? (
+              <a href={b.url} rel="noopener" target="_blank" class="btn btn-velvet">
+                {b.key === 'steam' ? (
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a10 10 0 0 0-9.95 9.09l5.4 2.23a2.82 2.82 0 0 1 1.6-.49c.08 0 .16 0 .24.01l2.4-3.5v-.05a3.77 3.77 0 0 1 3.76-3.77 3.77 3.77 0 0 1 3.77 3.77 3.77 3.77 0 0 1-3.78 3.77h-.08l-3.44 2.46v.19a2.84 2.84 0 0 1-5.6.63L3.03 15a10 10 0 1 0 8.97-13Zm-4.98 15.08-1.24-.51a2.14 2.14 0 0 0 2.97 1.12 2.14 2.14 0 0 0 1.14-2.79l1.28.53a2.84 2.84 0 0 1-4.15 1.65ZM17.63 8.5a2.5 2.5 0 1 0-2.5 2.51 2.5 2.5 0 0 0 2.5-2.5Zm-4.4 0a1.89 1.89 0 0 1 3.78 0 1.89 1.89 0 0 1-3.78 0Z" />
+                  </svg>
+                ) : (
+                  <span aria-hidden="true">▣</span>
+                )}
+                <span>{b.label}</span>
+              </a>
+            ) : (
+              <button type="button" class="btn btn-disabled" aria-disabled="true" disabled>
+                {b.key === 'steam' ? (
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a10 10 0 0 0-9.95 9.09l5.4 2.23a2.82 2.82 0 0 1 1.6-.49c.08 0 .16 0 .24.01l2.4-3.5v-.05a3.77 3.77 0 0 1 3.76-3.77 3.77 3.77 0 0 1 3.77 3.77 3.77 3.77 0 0 1-3.78 3.77h-.08l-3.44 2.46v.19a2.84 2.84 0 0 1-5.6.63L3.03 15a10 10 0 1 0 8.97-13Zm-4.98 15.08-1.24-.51a2.14 2.14 0 0 0 2.97 1.12 2.14 2.14 0 0 0 1.14-2.79l1.28.53a2.84 2.84 0 0 1-4.15 1.65ZM17.63 8.5a2.5 2.5 0 1 0-2.5 2.51 2.5 2.5 0 0 0 2.5-2.5Zm-4.4 0a1.89 1.89 0 0 1 3.78 0 1.89 1.89 0 0 1-3.78 0Z" />
+                  </svg>
+                ) : (
+                  <span aria-hidden="true">▣</span>
+                )}
+                <span>{b.label}</span>
+                {b.isComingSoon && (
+                  <span class="ml-1 text-[10px] uppercase tracking-widest opacity-70">· {comingSoonLabel}</span>
+                )}
+              </button>
+            )
+          ))}
         </div>
       </div>
 
