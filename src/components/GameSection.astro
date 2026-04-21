@@ -154,21 +154,22 @@ const storeButtons = storeIcons
       </div>
     )}
 
-    <!-- Press kit -->
-    <div id="press-kit" class="mt-24 border-t border-velvet-gold/15 pt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
-      <div>
-        <p class="eyebrow-deco">{d.ui.pressKit}</p>
-        <p class="mt-2 text-velvet-ivory/75 max-w-md text-sm">{d.ui.pressKitNote}</p>
+    <!-- Press kit — gated by ui.pressKitAvailable so games without a kit hide the section entirely. -->
+    {d.ui.pressKitAvailable && (
+      <div id="press-kit" class="mt-24 border-t border-velvet-gold/15 pt-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 reveal">
+        <div>
+          <p class="eyebrow-deco">{d.ui.pressKit}</p>
+          <p class="mt-2 text-velvet-ivory/75 max-w-md text-sm">{d.ui.pressKitNote}</p>
+        </div>
+        <a
+          href={d.pressKitUrl ?? '#'}
+          class="btn btn-outline border-velvet-gold/40 text-velvet-ivory hover:text-velvet-ivory hover:border-velvet-gold"
+        >
+          <span>{d.ui.pressKit}</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </div>
-      {/* TODO: replace # with final press-kit URL once ready. */}
-      <a
-        href={d.pressKitUrl ?? '#'}
-        class="btn btn-outline border-velvet-gold/40 text-velvet-ivory hover:text-velvet-ivory hover:border-velvet-gold"
-      >
-        <span>{d.ui.pressKit}</span>
-        <span aria-hidden="true">↗</span>
-      </a>
-    </div>
+    )}
   </div>
 
   <!-- Deco bottom frieze -->

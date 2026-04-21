@@ -94,8 +94,11 @@ const games = defineCollection({
     // Gallery — ordered list of image paths relative to /public
     gallery: z.array(z.string()).default([]),
 
-    // Locale-specific UI labels kept inside the entry for self-containment
+    // Locale-specific UI labels kept inside the entry for self-containment.
+    // pressKitAvailable gates the whole press-kit section — flip to true once
+    // a real press kit URL (pressKitUrl) is published.
     ui: z.object({
+      pressKitAvailable: z.boolean().default(false),
       pressKit: z.string(),
       galleryHint: z.string(),
       pressKitNote: z.string(),
