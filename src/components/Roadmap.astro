@@ -1,4 +1,5 @@
 ---
+import { SOCIAL_LINKS } from '../config/social';
 import { getDict, type Locale } from '../i18n/utils';
 
 interface Props {
@@ -37,8 +38,7 @@ const d = getDict(locale).roadmap;
     </ol>
 
     <div class="mt-12 reveal">
-      {/* TODO: replace href with Discord invite. */}
-      <a href="#" rel="noopener" target="_blank" class="btn btn-outline">
+      <a href={SOCIAL_LINKS.discord} rel="noopener" target="_blank" class="btn btn-outline">
         <span>{d.ctaDiscord}</span>
         <span aria-hidden="true">→</span>
       </a>

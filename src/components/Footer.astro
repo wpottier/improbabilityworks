@@ -3,6 +3,7 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { t, type Locale, SLUG_MAP } from '../i18n/utils';
 import { steamWishlistLink } from '../i18n/gameLinks';
+import { SOCIAL_LINKS } from '../config/social';
 
 interface Props {
   locale: Locale;
@@ -80,7 +81,7 @@ const velvetDoorWishlist = await steamWishlistLink('velvet-door', locale);
         <h3 class="eyebrow">{t('footer.colSocial', locale)}</h3>
         <ul class="mt-4 space-y-2 text-sm text-silver-cool/80">
           {/* TODO: replace # with real Discord, Bluesky, Mastodon, GitHub URLs. */}
-          <li><a class="hover:text-parchment" href="https://discord.gg/QBmZu3ds" target="_blank" rel="me noopener">{t('footer.links.discord', locale)}</a></li>
+          <li><a class="hover:text-parchment" href={SOCIAL_LINKS.discord} target="_blank" rel="me noopener">{t('footer.links.discord', locale)}</a></li>
           <li><a class="hover:text-parchment" href="https://www.twitch.tv/improbabilityworks" target="_blank" rel="me noopener">{t('footer.links.twitch', locale)}</a></li>
         </ul>
       </div>
