@@ -8,7 +8,6 @@
  * create the translation JSON and the game MDX files for that locale.
  * No changes needed here.
  */
-import { getCollection } from 'astro:content';
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
@@ -18,6 +17,7 @@ import Roadmap from '../../components/Roadmap.astro';
 import Team from '../../components/Team.astro';
 // Newsletter hidden until provider is configured.
 // import Newsletter from '../../components/Newsletter.astro';
+import { getLocalizedGames, getLocalizedMembers } from '../../i18n/content';
 import { LOCALES, DEFAULT_LOCALE, t, type Locale } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -33,12 +33,8 @@ const locale = lang as Locale;
 const title = t('meta.homeTitle', locale);
 const description = t('meta.homeDescription', locale);
 
-// Load all games for this locale, sorted by display order.
-const games = (await getCollection('games', ({ data }) => data.locale === locale))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const members = (await getCollection('members', ({ data }) => data.locale === locale))
-  .sort((a, b) => a.data.order - b.data.order);
+const games = await getLocalizedGames(locale);
+const members = await getLocalizedMembers(locale);
 
 // Build JSON-LD: Organisation + one VideoGame entry per game in the collection.
 const jsonLd = [
@@ -64,7 +60,7 @@ const jsonLd = [
       : {}),
     publisher: { '@type': 'Organization', name: 'Improbability Works' },
     developer: { '@type': 'Organization', name: 'Improbability Works' },
-    ...(g.data.stores.steam?.enabled && g.data.stores.steam.url
+    ...(g.data.stores?.steam?.enabled && g.data.stores.steam.url
       ? { url: g.data.stores.steam.url }
       : {}),
   })),

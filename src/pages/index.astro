@@ -3,7 +3,6 @@
  * EN home page — canonical URL is `/` (default locale, no prefix).
  * French equivalent lives at /fr/ via src/pages/[lang]/index.astro.
  */
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import Manifesto from '../components/Manifesto.astro';
@@ -12,18 +11,15 @@ import Roadmap from '../components/Roadmap.astro';
 import Team from '../components/Team.astro';
 // Newsletter hidden until provider is configured.
 // import Newsletter from '../components/Newsletter.astro';
+import { getLocalizedGames, getLocalizedMembers } from '../i18n/content';
 import { t } from '../i18n/utils';
 
 const locale = 'en' as const;
 const title = t('meta.homeTitle', locale);
 const description = t('meta.homeDescription', locale);
 
-// Load all games for this locale, sorted by display order.
-const games = (await getCollection('games', ({ data }) => data.locale === locale))
-  .sort((a, b) => a.data.order - b.data.order);
-
-const members = (await getCollection('members', ({ data }) => data.locale === locale))
-  .sort((a, b) => a.data.order - b.data.order);
+const games = await getLocalizedGames(locale);
+const members = await getLocalizedMembers(locale);
 
 // Build JSON-LD: Organisation + one VideoGame entry per game in the collection.
 const jsonLd = [
@@ -50,7 +46,7 @@ const jsonLd = [
       : {}),
     publisher: { '@type': 'Organization', name: 'Improbability Works' },
     developer: { '@type': 'Organization', name: 'Improbability Works' },
-    ...(g.data.stores.steam?.enabled && g.data.stores.steam.url
+    ...(g.data.stores?.steam?.enabled && g.data.stores.steam.url
       ? { url: g.data.stores.steam.url }
       : {}),
   })),

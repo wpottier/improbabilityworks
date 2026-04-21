@@ -1,16 +1,16 @@
 /**
  * Locale-aware link helpers for game storefronts.
  *
- * These read the current `games` collection so authors only maintain URLs in
- * one place (the MDX frontmatter) and every surface — footer, hero, newsletter —
- * picks them up automatically.
+ * These read the `games` collection through the merge helper so authors only
+ * maintain URLs in one place (the EN MDX frontmatter) and every surface —
+ * footer, hero, newsletter — picks them up automatically.
  *
  * Locale: plain .ts modules can't read `Astro.currentLocale`, so the caller
  * passes it explicitly. In .astro files that usually looks like:
  *     const url = await steamWishlistLink('velvet-door', locale);
  */
 
-import { getCollection } from 'astro:content';
+import { getLocalizedGame } from './content';
 import type { Locale } from './utils';
 
 /**
@@ -44,11 +44,8 @@ export async function steamWishlistLink(
   gameId: string,
   locale: Locale,
 ): Promise<string | null> {
-  const entries = await getCollection(
-    'games',
-    ({ data }) => data.gameId === gameId && data.locale === locale,
-  );
-  const steam = entries[0]?.data.stores.steam;
+  const game = await getLocalizedGame(gameId, locale);
+  const steam = game?.data.stores?.steam;
   if (!steam?.enabled || !steam.url) return null;
   return withSteamLang(steam.url, locale);
 }

@@ -26,49 +26,50 @@ const legal = defineCollection({
 /**
  * Collection `games` — one MDX entry per (game × locale).
  *
- * gameId   : canonical identifier for the game ('velvet-door', …).
- *            Used to pair locale variants together (language switcher, hreflang).
- * order    : display order when multiple games appear on the home page.
- * status   : gates which CTAs appear (wishlist vs early-access vs released).
+ * Authoring model: the **default-locale entry (EN)** is the source of truth.
+ * Non-default locales (`velvet-door.fr.mdx`, …) declare only the fields they
+ * override; every other field is inherited from the EN entry via the merge
+ * helper in src/i18n/content.ts (`getLocalizedGames`).
  *
- * The MDX body carries the extended pitch prose (rich text, formattable).
- * Structured data (features, links, gallery paths…) lives in frontmatter
- * so it can be iterated and mapped without touching the rendered content.
+ * Consequence for this schema: only `locale` and `gameId` are required. Every
+ * other field is optional so locale overrides can stay minimal. The EN entry
+ * should still carry the full set of fields — this invariant is a convention,
+ * not enforced by Zod, because a single collection cannot have per-locale
+ * schemas.
+ *
+ * The MDX body carries the pitch prose and is NOT inherited — each locale
+ * renders its own body.
  */
 const games = defineCollection({
   type: 'content',
   schema: z.object({
     locale: z.enum(['en', 'fr']),
     gameId: z.string(),
-    order: z.number().default(0),
+    order: z.number().optional(),
     status: z
       .enum(['announced', 'in-development', 'early-access', 'released'])
-      .default('in-development'),
+      .optional(),
 
-    // Display
-    eyebrow: z.string(),
-    title: z.string(),
-    tagline: z.string(),
-    pitchLede: z.string(),
+    // Display (locale-specific — usually overridden per locale)
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    tagline: z.string().optional(),
+    pitchLede: z.string().optional(),
 
-    // Feature cards
-    features: z.array(
-      z.object({
-        title: z.string(),
-        body: z.string(),
-      }),
-    ),
+    // Feature cards (locale-specific)
+    features: z
+      .array(
+        z.object({
+          title: z.string(),
+          body: z.string(),
+        }),
+      )
+      .optional(),
 
     /**
-     * Storefront buttons (Steam, Epic) — driven by per-store flags.
-     *
-     * enabled    : render the button at all. Unset it to remove the CTA entirely.
-     * comingSoon : render as a disabled "soon" button. The "Coming soon" suffix
-     *              lives in the global i18n dict (games.comingSoon).
-     * url        : destination when the store is live (enabled && !comingSoon).
-     *
-     * Button labels are not stored here — they're shared across games and live
-     * in the global i18n dict under games.stores.<key>.{live,comingSoon}.
+     * Storefront buttons — shared metadata, typically declared in EN only.
+     * Per-store flags: enabled, comingSoon, url.
+     * Button labels live in the global i18n dict (games.stores.<key>.*).
      */
     stores: z
       .object({
@@ -87,26 +88,26 @@ const games = defineCollection({
           })
           .optional(),
       })
-      .default({}),
+      .optional(),
 
     pressKitUrl: z.string().optional(),
 
-    // Gallery — ordered list of image paths relative to /public
-    gallery: z.array(z.string()).default([]),
+    // Gallery — shared; paths are locale-agnostic
+    gallery: z.array(z.string()).optional(),
 
-    // Locale-specific UI labels kept inside the entry for self-containment.
-    // pressKitAvailable gates the whole press-kit section — flip to true once
-    // a real press kit URL (pressKitUrl) is published.
-    ui: z.object({
-      pressKitAvailable: z.boolean().default(false),
-      pressKit: z.string(),
-      galleryHint: z.string(),
-      pressKitNote: z.string(),
-    }),
+    // Locale-specific UI labels
+    ui: z
+      .object({
+        pressKitAvailable: z.boolean().optional(),
+        pressKit: z.string().optional(),
+        galleryHint: z.string().optional(),
+        pressKitNote: z.string().optional(),
+      })
+      .optional(),
 
-    // Structured data hints for JSON-LD (VideoGame schema)
-    genre: z.array(z.string()).default([]),
-    platforms: z.array(z.string()).default(['PC']),
+    // Structured-data hints (shared)
+    genre: z.array(z.string()).optional(),
+    platforms: z.array(z.string()).optional(),
     minPlayers: z.number().optional(),
     maxPlayers: z.number().optional(),
   }),
@@ -115,25 +116,19 @@ const games = defineCollection({
 /**
  * Collection `members` — one MDX entry per (member × locale).
  *
- * memberId : canonical identifier ('will', …) pairing locale variants.
- * order    : display order when the team grows beyond one person.
- * avatar   : path under /public to the portrait/avatar asset.
- * links    : social/professional links, platform-keyed so the component can
- *            pick the right icon. Array (not object) to keep order authorial
- *            and allow future platforms without schema churn.
- *
- * The MDX body carries the bio prose (rich text, formattable).
+ * Same authoring model as `games`: EN is the source of truth, other locales
+ * declare only what differs. See src/i18n/content.ts `getLocalizedMembers`.
  */
 const members = defineCollection({
   type: 'content',
   schema: z.object({
     locale: z.enum(['en', 'fr']),
     memberId: z.string(),
-    order: z.number().default(0),
+    order: z.number().optional(),
 
-    name: z.string(),
-    role: z.string(),
-    avatar: z.string(),
+    name: z.string().optional(),
+    role: z.string().optional(),
+    avatar: z.string().optional(),
     avatarAlt: z.string().optional(),
 
     links: z
@@ -144,7 +139,7 @@ const members = defineCollection({
           url: z.string(),
         }),
       )
-      .default([]),
+      .optional(),
   }),
 });
 

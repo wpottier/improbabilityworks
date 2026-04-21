@@ -1,17 +1,18 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import type { LocalizedMember } from '../i18n/content';
 import { getDict, type Locale } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
-  members: CollectionEntry<'members'>[];
+  members: LocalizedMember[];
 }
 const { locale, members } = Astro.props;
 const d = getDict(locale).team;
 
 // Render each member's MDX body once at the top so we can interleave it in the template.
 const rendered = await Promise.all(
-  members.map(async (m) => ({ entry: m, Content: (await render(m)).Content })),
+  members.map(async (m) => ({ data: m.data, Content: (await render(m.entry)).Content })),
 );
 ---
 <section id="team" aria-labelledby="team-title" class="relative py-28 md:py-36">
@@ -24,8 +25,8 @@ const rendered = await Promise.all(
       <p class="mt-6 text-silver-cool/75 max-w-xl reveal" style="--reveal-delay: 160ms;">{d.intro}</p>
     </header>
 
-    {rendered.map(({ entry, Content }) => {
-      const m = entry.data;
+    {rendered.map(({ data: m, Content }) => {
+      const links = m.links ?? [];
       return (
         <article class="mt-16 grid grid-cols-12 gap-8 items-start reveal">
           <div class="col-span-12 md:col-span-4">
@@ -49,9 +50,9 @@ const rendered = await Promise.all(
               <Content />
             </div>
 
-            {m.links.length > 0 && (
+            {links.length > 0 && (
               <ul class="mt-8 flex flex-wrap gap-3" role="list">
-                {m.links.map((link) => (
+                {links.map((link) => (
                   <li>
                     <a href={link.url} rel="me noopener" target="_blank" class="btn btn-outline">
                       {link.platform === 'bluesky' && (

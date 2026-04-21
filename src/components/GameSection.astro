@@ -1,14 +1,30 @@
 ---
-import { render, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import type { LocalizedGame } from '../i18n/content';
 import { t } from '../i18n/utils';
 
 interface Props {
-  game: CollectionEntry<'games'>;
+  game: LocalizedGame;
 }
 
 const { game } = Astro.props;
-const { Content } = await render(game);
-const d = game.data;
+const { Content } = await render(game.entry);
+
+// Normalize: schema fields are optional (locale overrides may omit them), but
+// the merged EN-base record is expected to supply all display fields.
+// Fallbacks here prevent a crash if the EN entry is incomplete during authoring.
+const raw = game.data;
+const d = {
+  ...raw,
+  features: raw.features ?? [],
+  gallery: raw.gallery ?? [],
+  ui: {
+    pressKitAvailable: raw.ui?.pressKitAvailable ?? false,
+    pressKit: raw.ui?.pressKit ?? '',
+    galleryHint: raw.ui?.galleryHint ?? '',
+    pressKitNote: raw.ui?.pressKitNote ?? '',
+  },
+};
 
 // Build the storefront button list from the per-store flags.
 // An enabled store without a URL (and not marked comingSoon) is treated as
@@ -20,7 +36,7 @@ const comingSoonLabel = t('games.comingSoon', d.locale);
 
 const storeButtons = storeIcons
   .map((key): { key: StoreKey; label: string; url?: string; isLive: boolean; isComingSoon: boolean } | null => {
-    const s = d.stores[key];
+    const s = d.stores?.[key];
     if (!s || !s.enabled) return null;
     const isLive = !s.comingSoon && Boolean(s.url);
     const label = t(
